@@ -1,0 +1,12 @@
+D:\BCA\BCA VIII\Project\ChatHub\ChatHub.DAL\bin\Debug\net6.0\ChatHub.DAL.deps.json
+D:\BCA\BCA VIII\Project\ChatHub\ChatHub.DAL\bin\Debug\net6.0\ChatHub.DAL.dll
+D:\BCA\BCA VIII\Project\ChatHub\ChatHub.DAL\bin\Debug\net6.0\ChatHub.DAL.pdb
+D:\BCA\BCA VIII\Project\ChatHub\ChatHub.DAL\obj\Debug\net6.0\ChatHub.DAL.csproj.AssemblyReference.cache
+D:\BCA\BCA VIII\Project\ChatHub\ChatHub.DAL\obj\Debug\net6.0\ChatHub.DAL.GeneratedMSBuildEditorConfig.editorconfig
+D:\BCA\BCA VIII\Project\ChatHub\ChatHub.DAL\obj\Debug\net6.0\ChatHub.DAL.AssemblyInfoInputs.cache
+D:\BCA\BCA VIII\Project\ChatHub\ChatHub.DAL\obj\Debug\net6.0\ChatHub.DAL.AssemblyInfo.cs
+D:\BCA\BCA VIII\Project\ChatHub\ChatHub.DAL\obj\Debug\net6.0\ChatHub.DAL.csproj.CoreCompileInputs.cache
+D:\BCA\BCA VIII\Project\ChatHub\ChatHub.DAL\obj\Debug\net6.0\ChatHub.DAL.dll
+D:\BCA\BCA VIII\Project\ChatHub\ChatHub.DAL\obj\Debug\net6.0\refint\ChatHub.DAL.dll
+D:\BCA\BCA VIII\Project\ChatHub\ChatHub.DAL\obj\Debug\net6.0\ChatHub.DAL.pdb
+D:\BCA\BCA VIII\Project\ChatHub\ChatHub.DAL\obj\Debug\net6.0\ref\ChatHub.DAL.dll

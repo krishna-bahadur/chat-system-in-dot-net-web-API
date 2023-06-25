@@ -1,0 +1,19 @@
+{
+  "Version": 1,
+  "Hash": "20yCObL8QuCt0xqE6Lp7fxXPbK5mUCNBfplvsJBEfi0=",
+  "Source": "ChatHub",
+  "BasePath": "_content/ChatHub",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "ChatHub\\wwwroot",
+      "Source": "ChatHub",
+      "ContentRoot": "D:\\BCA\\BCA VIII\\Project\\ChatHub\\ChatHub\\wwwroot\\",
+      "BasePath": "_content/ChatHub",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": []
+}
