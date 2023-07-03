@@ -50,5 +50,16 @@ namespace ChatHub.Controllers
             }
             return StatusCode(StatusCodes.Status200OK, result.Data);
         }
+        [HttpPatch]
+        [Route("UpdateDepartment")]
+        public async Task<IActionResult> UpdateDepartment([FromForm] DepartmentDTO departmentDTO)
+        {
+            var result = await _departmentService.UpdateDepartment(departmentDTO);
+            if (!result.Success)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, result.Errors);
+            }
+            return StatusCode(StatusCodes.Status200OK, result.Data);
+        }
     }
 }

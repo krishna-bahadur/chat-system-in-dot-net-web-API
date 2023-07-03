@@ -35,7 +35,7 @@ namespace ChatHub.DAL.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("DepartmentId")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256)
@@ -90,8 +90,6 @@ namespace ChatHub.DAL.Migrations
                         .HasColumnType("nvarchar(256)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("DepartmentId");
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -296,15 +294,6 @@ namespace ChatHub.DAL.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
-                });
-
-            modelBuilder.Entity("ChatHub.DAL.Datas.ApplicationUser", b =>
-                {
-                    b.HasOne("ChatHub.DAL.Entities.Department", "Department")
-                        .WithMany()
-                        .HasForeignKey("DepartmentId");
-
-                    b.Navigation("Department");
                 });
 
             modelBuilder.Entity("ChatHub.DAL.Entities.Department", b =>

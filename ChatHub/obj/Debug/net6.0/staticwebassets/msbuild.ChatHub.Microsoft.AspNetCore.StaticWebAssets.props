@@ -1,11 +1,11 @@
 ﻿<Project>
   <ItemGroup>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Images\11217416-570a-40a2-ae1a-0a23f4dbd244-siliconsoft.png))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Images\19e3990c-3ab2-41b9-8665-cb473e9cf676-siliconsoft.png))">
       <SourceType>Package</SourceType>
       <SourceId>ChatHub</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/ChatHub</BasePath>
-      <RelativePath>Images/11217416-570a-40a2-ae1a-0a23f4dbd244-siliconsoft.png</RelativePath>
+      <RelativePath>Images/19e3990c-3ab2-41b9-8665-cb473e9cf676-siliconsoft.png</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -14,14 +14,14 @@
       <AssetTraitValue></AssetTraitValue>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Images\11217416-570a-40a2-ae1a-0a23f4dbd244-siliconsoft.png))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Images\19e3990c-3ab2-41b9-8665-cb473e9cf676-siliconsoft.png))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Images\48ce0e80-3c0f-4026-b6ed-40c87eca806a-siliconsoft.png))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Images\625880a0-6689-464a-847a-a75588a6d9c5-siliconsoft.png))">
       <SourceType>Package</SourceType>
       <SourceId>ChatHub</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/ChatHub</BasePath>
-      <RelativePath>Images/48ce0e80-3c0f-4026-b6ed-40c87eca806a-siliconsoft.png</RelativePath>
+      <RelativePath>Images/625880a0-6689-464a-847a-a75588a6d9c5-siliconsoft.png</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -30,14 +30,14 @@
       <AssetTraitValue></AssetTraitValue>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Images\48ce0e80-3c0f-4026-b6ed-40c87eca806a-siliconsoft.png))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Images\625880a0-6689-464a-847a-a75588a6d9c5-siliconsoft.png))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Images\673e6c29-6ff7-4714-9e4c-ece1a3377c41-siliconsoft.png))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Images\772ab916-1405-498c-ae70-efd03fd2e4ce-siliconsoft.png))">
       <SourceType>Package</SourceType>
       <SourceId>ChatHub</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/ChatHub</BasePath>
-      <RelativePath>Images/673e6c29-6ff7-4714-9e4c-ece1a3377c41-siliconsoft.png</RelativePath>
+      <RelativePath>Images/772ab916-1405-498c-ae70-efd03fd2e4ce-siliconsoft.png</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -46,14 +46,14 @@
       <AssetTraitValue></AssetTraitValue>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Images\673e6c29-6ff7-4714-9e4c-ece1a3377c41-siliconsoft.png))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Images\772ab916-1405-498c-ae70-efd03fd2e4ce-siliconsoft.png))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Images\7bfde877-a95a-4986-b94b-078c6964c7aa-siliconsoft.png))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Images\93292702-4d0f-4f81-81d3-77879f66ca63-Screenshot_1.png))">
       <SourceType>Package</SourceType>
       <SourceId>ChatHub</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/ChatHub</BasePath>
-      <RelativePath>Images/7bfde877-a95a-4986-b94b-078c6964c7aa-siliconsoft.png</RelativePath>
+      <RelativePath>Images/93292702-4d0f-4f81-81d3-77879f66ca63-Screenshot_1.png</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -62,14 +62,14 @@
       <AssetTraitValue></AssetTraitValue>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Images\7bfde877-a95a-4986-b94b-078c6964c7aa-siliconsoft.png))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Images\93292702-4d0f-4f81-81d3-77879f66ca63-Screenshot_1.png))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Images\8b2c6e89-df06-4ecd-bed7-656aa266e5fe-siliconsoft.png))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Images\a364599c-11b2-42e8-9325-577fbd80ab66-Screenshot_1.png))">
       <SourceType>Package</SourceType>
       <SourceId>ChatHub</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/ChatHub</BasePath>
-      <RelativePath>Images/8b2c6e89-df06-4ecd-bed7-656aa266e5fe-siliconsoft.png</RelativePath>
+      <RelativePath>Images/a364599c-11b2-42e8-9325-577fbd80ab66-Screenshot_1.png</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -78,14 +78,14 @@
       <AssetTraitValue></AssetTraitValue>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Images\8b2c6e89-df06-4ecd-bed7-656aa266e5fe-siliconsoft.png))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Images\a364599c-11b2-42e8-9325-577fbd80ab66-Screenshot_1.png))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Images\cadd25c2-66b2-4f01-8d60-3f9478160083-siliconsoft.png))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Images\b039d42b-a4f4-4318-bd7b-e35b1d1684fc-siliconsoft.png))">
       <SourceType>Package</SourceType>
       <SourceId>ChatHub</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/ChatHub</BasePath>
-      <RelativePath>Images/cadd25c2-66b2-4f01-8d60-3f9478160083-siliconsoft.png</RelativePath>
+      <RelativePath>Images/b039d42b-a4f4-4318-bd7b-e35b1d1684fc-siliconsoft.png</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -94,39 +94,7 @@
       <AssetTraitValue></AssetTraitValue>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Images\cadd25c2-66b2-4f01-8d60-3f9478160083-siliconsoft.png))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Images\dd8d824f-5d66-46e9-845a-c1e0b9a28220-siliconsoft.png))">
-      <SourceType>Package</SourceType>
-      <SourceId>ChatHub</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/ChatHub</BasePath>
-      <RelativePath>Images/dd8d824f-5d66-46e9-845a-c1e0b9a28220-siliconsoft.png</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Images\dd8d824f-5d66-46e9-845a-c1e0b9a28220-siliconsoft.png))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Images\fcb56fc1-0c52-486b-86aa-ca03aca0b71f-siliconsoft.png))">
-      <SourceType>Package</SourceType>
-      <SourceId>ChatHub</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/ChatHub</BasePath>
-      <RelativePath>Images/fcb56fc1-0c52-486b-86aa-ca03aca0b71f-siliconsoft.png</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Images\fcb56fc1-0c52-486b-86aa-ca03aca0b71f-siliconsoft.png))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Images\b039d42b-a4f4-4318-bd7b-e35b1d1684fc-siliconsoft.png))</OriginalItemSpec>
     </StaticWebAsset>
   </ItemGroup>
 </Project>

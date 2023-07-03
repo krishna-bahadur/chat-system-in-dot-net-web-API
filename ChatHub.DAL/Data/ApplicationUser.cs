@@ -14,7 +14,6 @@ namespace ChatHub.DAL.Datas
         public string? RefreshToken { get; set; }
         public DateTime RefreshTokenExpiryTime { get; set; }
         public bool IsActive { get; set; }
-        public virtual Department Department { get; set; }
         public string? DepartmentId { get; set; }
 
     }

@@ -10,6 +10,7 @@ namespace ChatHub.BLL.Services.Interfaces
     public interface IDepartmentService
     {
         Task<ServiceResult<DepartmentDTO>> CreateDepartment(DepartmentDTO departmentDTO);
+        Task<ServiceResult<DepartmentDTO>> UpdateDepartment(DepartmentDTO departmentDTO);
         Task<ServiceResult<List<DepartmentDTO>>> GetDepartments();
         Task<ServiceResult<DepartmentDTO>> GetDepartmentById(string departmentId);
     }

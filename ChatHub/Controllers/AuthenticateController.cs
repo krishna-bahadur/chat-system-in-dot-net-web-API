@@ -88,6 +88,27 @@ namespace ChatHub.Controllers
             }
             return StatusCode(StatusCodes.Status200OK, result.Data);
         }
+        [HttpGet]
+        [Route("GetUserById/{Id}")]
+        public async Task<IActionResult> GetUserById(string Id)
+        {
+            var result = await _authService.GetUserById(Id);
+            if (!result.Success)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+            return StatusCode(StatusCodes.Status200OK, result.Data);
+        }
+        [HttpGet("change-user-status")]
+        public async Task<IActionResult> ChangeUserStatus(string Id)
+        {
+            var result = await _authService.ChangeUserStatus(Id);
+            if (!result.Success)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+            return StatusCode(StatusCodes.Status200OK, result.Data);
+        }
 
 
         //        [HttpPost]

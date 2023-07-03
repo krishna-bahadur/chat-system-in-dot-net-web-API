@@ -14,8 +14,10 @@ namespace ChatHub.BLL.Services.Interfaces
         Task<ServiceResult<object>> logout(string username);
         Task<ServiceResult<object>> CheckEmail(string email);
         Task<ServiceResult<object>> CheckUsername(string username);
+        Task<ServiceResult<RegisterModel>> GetUserById(string Id);
         Task<ServiceResult<List<RoleDTO>>> GetRoles();
         Task<ServiceResult<List<RegisterModel>>> GetAllUsers();
+        Task<ServiceResult<RegisterModel>> ChangeUserStatus(string Id);
         Task<ServiceResult<object>> RefreshToken(TokenModel tokenModel);
     }
 }

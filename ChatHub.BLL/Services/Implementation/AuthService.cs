@@ -39,7 +39,7 @@ namespace ChatHub.BLL.Services.Implementation
             _tokenService = tokenService;
             _dbContext = dbContext;
         }
-        
+
 
         public async Task<ServiceResult<object>> Login(LoginModel loginModel)
         {
@@ -79,11 +79,11 @@ namespace ChatHub.BLL.Services.Implementation
                         Expiration = token.ValidTo
                     });
             }
-            return new ServiceResult<object>(false, errors: new[] {"Invalid username or password."});
+            return new ServiceResult<object>(false, errors: new[] { "Invalid username or password." });
         }
         public async Task<ServiceResult<object>> CreateUser(RegisterModel registerModel)
         {
-            using(var dbContext =await _dbContext.Database.BeginTransactionAsync())
+            using (var dbContext = await _dbContext.Database.BeginTransactionAsync())
             {
                 try
                 {
@@ -105,6 +105,7 @@ namespace ChatHub.BLL.Services.Implementation
                         SecurityStamp = Guid.NewGuid().ToString(),
                         UserName = registerModel.Username,
                         DepartmentId = registerModel.DepartmentId,
+                        IsActive = true,
                     };
                     var result = await _userManager.CreateAsync(user, registerModel.Password);
                     if (!result.Succeeded)
@@ -112,32 +113,32 @@ namespace ChatHub.BLL.Services.Implementation
                         return new ServiceResult<object>(false, errors: new[] { "User creation failed. Please try again." });
                     }
                     var role = await _roleManager.FindByIdAsync(registerModel.RoleId);
-                    if (role == null )
+                    if (role == null)
                     {
                         return new ServiceResult<object>(false, errors: new[] { "Role was not found." });
                     }
-                    
+
                     await _userManager.AddToRoleAsync(user, role.Name);
 
                     await dbContext.CommitAsync();
                     await dbContext.DisposeAsync();
                     return new ServiceResult<object>(true);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     await dbContext.RollbackAsync();
                     await dbContext.DisposeAsync();
                     return new ServiceResult<object>(false, errors: new[] { ex.Message });
                 }
             }
-            
+
         }
 
         public async Task<ServiceResult<List<RoleDTO>>> GetRoles()
         {
             List<RoleDTO> roleDTOs = new List<RoleDTO>();
             var roles = await _roleManager.Roles.Where(x => x.Name != "superadmin").ToListAsync();
-            if(roles.Count > 0)
+            if (roles.Count > 0)
             {
                 foreach (var role in roles)
                 {
@@ -219,24 +220,76 @@ namespace ChatHub.BLL.Services.Implementation
         public async Task<ServiceResult<List<RegisterModel>>> GetAllUsers()
         {
             List<RegisterModel> registerModels = new List<RegisterModel>();
-            var users = await _userManager.Users.Include(x=>x.DepartmentId).ToListAsync();
+            var users = await _userManager.Users.ToListAsync();
+            //get users without superadmin user role.
+            users = users.Where(u => !_userManager.IsInRoleAsync(u, "superadmin").Result).ToList();
 
-            if(users.Count > 0)
+            if (users.Count > 0)
             {
                 foreach (var user in users)
                 {
+                    var departmentName = (await _dbContext.Departments.Where(x => x.DepartmentId == user.DepartmentId).FirstOrDefaultAsync())?.DepartmentName ?? null;
                     registerModels.Add(new RegisterModel()
                     {
+                        Fullname = user.FullName,
                         UserId = user.Id,
                         Username = user.UserName,
                         Email = user.Email,
                         DepartmentId = user.DepartmentId,
-                        DepartmentName = user.DepartmentId,
+                        DepartmentName = departmentName,
+                        RoleName= (await _userManager.GetRolesAsync(user)).FirstOrDefault(),
+                        IsActive = user.IsActive,
                     });
                 }
                 return new ServiceResult<List<RegisterModel>>(true, registerModels);
             }
-            return new ServiceResult<List<RegisterModel>>(false, errors: new[]{ "Users not found."});
+            return new ServiceResult<List<RegisterModel>>(false, errors: new[] { "Users not found." });
+        }
+
+        public async Task<ServiceResult<RegisterModel>> GetUserById(string id)
+        {
+            var user = await _userManager.Users.Where(x => x.Id == id).FirstOrDefaultAsync();
+
+            if (user != null)
+            {
+                var roles = await _userManager.GetRolesAsync(user);
+                var roleId = await _roleManager.FindByNameAsync(roles.FirstOrDefault()); 
+
+                if (roleId != null)
+                {
+                    RegisterModel registerModel = new RegisterModel()
+                    {
+                        Fullname = user.FullName,
+                        UserId = user.Id,
+                        Username = user.UserName,
+                        Email = user.Email,
+                        RoleId = roleId.Id,
+                        DepartmentId = user.DepartmentId,
+                    };
+                    return new ServiceResult<RegisterModel>(true, registerModel);
+                }
+            }
+            return new ServiceResult<RegisterModel>(false, errors: new[] { "User not found or does not have a role." });
+        }
+
+        public async Task<ServiceResult<RegisterModel>> ChangeUserStatus(string UserId)
+        {
+            var user = await _userManager.Users.FirstOrDefaultAsync(x=>x.Id == UserId);
+            if (user != null)
+            {
+                user.IsActive = !user.IsActive;
+                await _dbContext.SaveChangesAsync();
+                RegisterModel registerModel = new RegisterModel()
+                {
+                    Fullname = user.FullName,
+                    UserId = user.Id,
+                    Username = user.UserName,
+                    Email = user.Email,
+                    DepartmentId = user.DepartmentId,
+                };
+                return new ServiceResult<RegisterModel>(true, registerModel);
+            }
+            return new ServiceResult<RegisterModel>(false, errors: new[] { "User not found or does not have a role." });
         }
     }
 }

@@ -81,5 +81,38 @@ namespace ChatHub.BLL.Services.Implementation
             }
             return new ServiceResult<List<DepartmentDTO>>(false, errors: new[] {"Departments not found."});
         }
+
+        public async Task<ServiceResult<DepartmentDTO>> UpdateDepartment(DepartmentDTO departmentDTO)
+        {
+            using (var dbContext = await _dbContext.Database.BeginTransactionAsync())
+            {
+                try
+                {
+                    Department department = new Department()
+                    {
+                        DepartmentId = departmentDTO.DepartmentId,
+                        DepartmentName = departmentDTO.DepartmentName,
+                        DepartmentHead = departmentDTO.DepartmentHead,
+                        Phone = departmentDTO.Phone,
+                        OrganizationId = _tokenService.GetDepartmentId(),
+                    };
+                    if (departmentDTO.LogoFile != null)
+                    {
+                        department.LogoURL = await _uploadImages.UploadImageAsync(departmentDTO.LogoFile);
+                        department.LogoName = departmentDTO.LogoFile.FileName;
+                    };
+                    var department1 = await _departmentRepository.UpdateAsync(department);
+                    await dbContext.CommitAsync();
+                    await dbContext.DisposeAsync();
+                    return new ServiceResult<DepartmentDTO>(true, new DepartmentDTO().ToDepartmentDTO(department1));
+                }
+                catch (Exception ex)
+                {
+                    await dbContext.RollbackAsync();
+                    await dbContext.CommitAsync();
+                    return new ServiceResult<DepartmentDTO>(false, errors: new[] { ex.Message });
+                }
+            }
+        }
     }
 }
