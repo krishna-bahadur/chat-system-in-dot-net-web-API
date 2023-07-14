@@ -39,5 +39,13 @@ namespace ChatHub.BLL.Services.Implementation
             var uid = jwt.Claims.FirstOrDefault(x => x.Type == "uid");
             return uid.Value;
         }
+        public string GetRole()
+        {
+            var token = GetTokenFromAuthorizationHeader();
+            var handler = new JwtSecurityTokenHandler();
+            var jwt = handler.ReadJwtToken(token);
+            var role = jwt.Claims.FirstOrDefault(x => x.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name");
+            return role.Value;
+        }
     }
 }

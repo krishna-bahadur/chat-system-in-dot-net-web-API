@@ -3,6 +3,7 @@ using ChatHub.BLL.Services.Interfaces;
 using ChatHub.DAL.Datas;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -44,7 +45,7 @@ namespace ChatHub.BLL.Services.Implementation
         public async Task<ServiceResult<object>> Login(LoginModel loginModel)
         {
             var user = await _userManager.FindByNameAsync(loginModel.Username);
-            if (user != null && await _userManager.CheckPasswordAsync(user, loginModel.Password))
+            if (user != null && await _userManager.CheckPasswordAsync(user, loginModel.Password) && user.IsActive)
             {
                 var userRoles = await _userManager.GetRolesAsync(user);
 
@@ -217,12 +218,57 @@ namespace ChatHub.BLL.Services.Implementation
             return new ServiceResult<object>(true, userExists);
         }
 
-        public async Task<ServiceResult<List<RegisterModel>>> GetAllUsers()
+        public async Task<ServiceResult<List<RegisterModel>>> GetAllUsers(string param)
         {
             List<RegisterModel> registerModels = new List<RegisterModel>();
-            var users = await _userManager.Users.ToListAsync();
-            //get users without superadmin user role.
-            users = users.Where(u => !_userManager.IsInRoleAsync(u, "superadmin").Result).ToList();
+            List<ApplicationUser> users = new List<ApplicationUser>();
+            if(!string.IsNullOrEmpty(param))
+            {
+                if(param == "all")
+                {
+                   
+                    if(_tokenService.GetRole() == "superadmin")
+                    {
+                        users = await _userManager.Users.ToListAsync();
+                        users = users.Where(u => !_userManager.IsInRoleAsync(u, "superadmin").Result).ToList();
+                    }
+                    else
+                    {
+                        users = await _userManager.Users.Where(x=>x.DepartmentId == _tokenService.GetDepartmentId()).ToListAsync();
+                        //get users without superadmin user role.
+                        users = users.Where(u => !_userManager.IsInRoleAsync(u, "superadmin").Result).ToList();
+                    }
+                  
+                }
+                if(param == "active")
+                {
+                    if (_tokenService.GetRole() == "superadmin")
+                    {
+                        users = await _userManager.Users.Where(x => x.IsActive == true).ToListAsync();
+                        //get users without superadmin user role.
+                        users = users.Where(u => !_userManager.IsInRoleAsync(u, "superadmin").Result).ToList();
+                    }
+                    else
+                    {
+                        users = await _userManager.Users.Where(x => x.IsActive == true && x.DepartmentId == _tokenService.GetDepartmentId()).ToListAsync();
+                        //get users without superadmin user role.
+                        users = users.Where(u => !_userManager.IsInRoleAsync(u, "superadmin").Result).ToList();
+                    }
+
+                }
+                if (param == "includingsuperadmin")
+                {
+                    if (_tokenService.GetRole() == "superadmin")
+                    {
+                        users = await _userManager.Users.ToListAsync();
+                    }
+                    else
+                    {
+                        users = await _userManager.Users.Where(x => x.DepartmentId == _tokenService.GetDepartmentId()).ToListAsync();
+                    }
+                    
+                }
+            }
 
             if (users.Count > 0)
             {
@@ -286,10 +332,39 @@ namespace ChatHub.BLL.Services.Implementation
                     Username = user.UserName,
                     Email = user.Email,
                     DepartmentId = user.DepartmentId,
+                    IsActive = user.IsActive
                 };
                 return new ServiceResult<RegisterModel>(true, registerModel);
             }
             return new ServiceResult<RegisterModel>(false, errors: new[] { "User not found or does not have a role." });
+        }
+        public async Task<ServiceResult<string>> GetActiveUsers()
+        {
+            List<ApplicationUser> users = new List<ApplicationUser>();
+            if(_tokenService.GetRole() == "superadmin")
+            {
+                users = await _userManager.Users.Where(x => x.RefreshToken != null).ToListAsync();
+            }
+            else
+            {
+                users = await _userManager.Users.Where(x => x.RefreshToken != null && x.DepartmentId == _tokenService.GetDepartmentId()).ToListAsync();
+            }
+            if (users.Count > 0)
+            {
+                return new ServiceResult<string>(true, users.Count.ToString());
+            }
+            return new ServiceResult<string>(true, "0");
+        }
+        public async Task<ServiceResult<object>> Logout()
+        {
+            var user = await _userManager.FindByIdAsync(_tokenService.GetUserId());
+            if (user != null)
+            {
+                user.RefreshToken = null;
+                await _userManager.UpdateAsync(user);
+                return new ServiceResult<object>(true);
+            }
+            return new ServiceResult<object>(false);
         }
     }
 }

@@ -51,17 +51,30 @@ namespace ChatHub.Controllers
             }
             return StatusCode(StatusCodes.Status200OK, "User created successfully.");
         }
-        [HttpGet("get-all-users")]
-        public async Task<IActionResult> GetAllUsers()
+        [HttpGet]
+        [Route("get-all-users/{param}")]
+        public async Task<IActionResult> GetAllUsers(string param)
         {
-            var result = await _authService.GetAllUsers();
+            var result = await _authService.GetAllUsers(param);
             if (!result.Success)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, result.Errors);
             }
             return StatusCode(StatusCodes.Status200OK, result.Data);
         }
-        [HttpGet("check-username")]
+        [HttpGet]
+        [Route("get-active-users")]
+        public async Task<IActionResult> GetActiveUsers()
+        {
+            var result = await _authService.GetActiveUsers();
+            if (!result.Success)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, result.Errors);
+            }
+            return StatusCode(StatusCodes.Status200OK, result.Data);
+        }
+        [HttpGet]
+        [Route("check-username/{username}")]
         public async Task<IActionResult> CheckUsername(string username)
         {
             var userExists = await _authService.CheckUsername(username);
@@ -69,7 +82,8 @@ namespace ChatHub.Controllers
             return Ok(new { exists });
         }
 
-        [HttpGet("check-email")]
+        [HttpGet]
+        [Route("check-email/{email}")]
         public async Task<IActionResult> CheckEmail(string email)
         {
             var userEmailExists = await _authService.CheckEmail(email);
@@ -89,20 +103,21 @@ namespace ChatHub.Controllers
             return StatusCode(StatusCodes.Status200OK, result.Data);
         }
         [HttpGet]
-        [Route("GetUserById/{Id}")]
-        public async Task<IActionResult> GetUserById(string Id)
+        [Route("GetUserById/{UserId}")]
+        public async Task<IActionResult> GetUserById(string UserId)
         {
-            var result = await _authService.GetUserById(Id);
+            var result = await _authService.GetUserById(UserId);
             if (!result.Success)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
             return StatusCode(StatusCodes.Status200OK, result.Data);
         }
-        [HttpGet("change-user-status")]
-        public async Task<IActionResult> ChangeUserStatus(string Id)
+        [HttpGet]
+        [Route("change-user-status/{UserId}")]
+        public async Task<IActionResult> ChangeUserStatus(string UserId)
         {
-            var result = await _authService.ChangeUserStatus(Id);
+            var result = await _authService.ChangeUserStatus(UserId);
             if (!result.Success)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError);
@@ -189,19 +204,17 @@ namespace ChatHub.Controllers
         //            });
         //        }
 
-        //        [Authorize]
-        //        [HttpPost]
-        //        [Route("revoke/{username}")]
-        //        public async Task<IActionResult> Revoke(string username)
-        //        {
-        //            var user = await _userManager.FindByNameAsync(username);
-        //            if (user == null) return BadRequest("Invalid user name");
-
-        //            user.RefreshToken = null;
-        //            await _userManager.UpdateAsync(user);
-
-        //            return NoContent();
-        //        }
+        [HttpGet]
+        [Route("logout")]
+        public async Task<IActionResult> Logout()
+        {
+            var result = await _authService.Logout();
+            if (!result.Success)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+            return StatusCode(StatusCodes.Status200OK, "success");
+        }
 
         //        [Authorize]
         //        [HttpPost]
