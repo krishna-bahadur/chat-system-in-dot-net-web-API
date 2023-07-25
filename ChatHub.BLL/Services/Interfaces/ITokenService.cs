@@ -11,5 +11,6 @@ namespace ChatHub.BLL.Services.Interfaces
         string GetUserId();
         string GetDepartmentId();
         string GetRole();
+        string GetUsername();
     }
 }

@@ -15,6 +15,8 @@ ConfigurationManager configuration = builder.Configuration;
 // Add services to the container.
 builder.Services.ConfigureDbContext(configuration);
 
+builder.Services.AddSignalR();
+
 // Adding Authentication
 builder.Services.ConfigureJwtBearerAuthentication(configuration);
 
@@ -38,7 +40,6 @@ builder.Services.ConfigureServiceDependencies();
 
 builder.Services.AddControllers();
 
-builder.Services.AddSignalR();
 
 builder.Services.AddEndpointsApiExplorer();
 

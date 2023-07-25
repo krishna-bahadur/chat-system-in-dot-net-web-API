@@ -1,4 +1,5 @@
 ﻿using ChatHub.BLL.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -44,8 +45,16 @@ namespace ChatHub.BLL.Services.Implementation
             var token = GetTokenFromAuthorizationHeader();
             var handler = new JwtSecurityTokenHandler();
             var jwt = handler.ReadJwtToken(token);
-            var role = jwt.Claims.FirstOrDefault(x => x.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name");
+            var role = jwt.Claims.FirstOrDefault(x => x.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role");
             return role.Value;
+        }
+        public string GetUsername()
+        {
+            var token = GetTokenFromAuthorizationHeader();
+            var handler = new JwtSecurityTokenHandler();
+            var jwt = handler.ReadJwtToken(token);
+            var username = jwt.Claims.FirstOrDefault(x => x.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name");
+            return username.Value;
         }
     }
 }
