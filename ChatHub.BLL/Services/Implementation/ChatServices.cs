@@ -29,6 +29,11 @@ namespace ChatHub.BLL.Services.Implementation
                 if (sender != null && recipientConnectionId != null)
                 {
                     await Clients.Client(recipientConnectionId).SendAsync("ReceiveMessage", senderUsername, receiverUsername, message);
+                    var senderConnectionId = GetConnectionId(senderUsername);
+                    if (senderConnectionId != null)
+                    {
+                        await Clients.Client(senderConnectionId).SendAsync("ReceiveMessage", senderUsername, receiverUsername, message);
+                    }
                 }
                 else
                 {

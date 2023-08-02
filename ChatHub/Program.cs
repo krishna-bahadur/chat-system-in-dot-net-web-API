@@ -25,16 +25,30 @@ builder.Services.ConfigureIdentityPassword();
 
 builder.Services.ConfigureCors();
 
-builder.Services.AddCors(options =>
-{
-    options.AddDefaultPolicy(builder =>
-    {
-        builder.WithOrigins("http://localhost:3000")
-            .AllowAnyHeader()
-            .AllowAnyMethod()
-            .AllowCredentials();
-    });
-});
+//builder.Services.AddCors(options =>
+//{
+//    options.AddDefaultPolicy(builder =>
+//    {
+//        builder.WithOrigins("http://localhost:3000")
+//            .AllowAnyHeader()
+//            .AllowAnyMethod()
+//            .AllowCredentials();
+//    });
+//});
+
+//builder.Services.AddCors(options =>
+//{
+//    options.AddDefaultPolicy(
+//    policy =>
+//    {
+//        policy
+//    .AllowAnyOrigin()
+//    .AllowAnyHeader()
+//    .AllowAnyMethod();
+//    //.WithHeaders(HeaderNames.AccessControlRequestHeaders, HeaderNames.AccessControlAllowOrigin, HeaderNames.AccessControlAllowCredentials, HeaderNames.AccessControlAllowMethods).
+//    //SetIsOriginAllowed(policy => new Uri(policy).Host == "localhost").WithHeaders("Delete");
+//    });
+//});
 
 builder.Services.ConfigureServiceDependencies();
 
@@ -48,7 +62,7 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 {
     app.UseSwagger();
     app.UseSwaggerUI();

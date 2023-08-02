@@ -3,6 +3,8 @@ using ChatHub.BLL.DTOs;
 using ChatHub.BLL.Services.Implementation;
 using ChatHub.BLL.Services.Interfaces;
 using ChatHub.DAL.Datas;
+using ChatHub.DAL.Entities;
+using ChatHub.DAL.Repository.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -21,10 +23,7 @@ namespace ChatHub.Controllers
     public class AuthenticateController : ControllerBase
     {
         private readonly IAuthService _authService;
-
-        public AuthenticateController(
-            IAuthService authService
-            )
+        public AuthenticateController(IAuthService authService)
         {
             _authService = authService;
         }
@@ -118,6 +117,17 @@ namespace ChatHub.Controllers
         public async Task<IActionResult> ChangeUserStatus(string UserId)
         {
             var result = await _authService.ChangeUserStatus(UserId);
+            if (!result.Success)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+            return StatusCode(StatusCodes.Status200OK, result.Data);
+        }
+        [HttpGet]
+        [Route("get-users-by-departmentId/{DepartmentId}")]
+        public async Task<IActionResult> GetUsersByDepartmentId(string DepartmentId)
+        {
+            var result = await _authService.GetUsersByDeparmentId(DepartmentId);
             if (!result.Success)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError);

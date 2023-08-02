@@ -84,7 +84,8 @@ namespace ChatHub.BLL.Services.Implementation
                         SecurityStamp = Guid.NewGuid().ToString(),
                         UserName = dto.Username,
                         Email = dto.Email,
-                        DepartmentId = organization.OrganizationId
+                        DepartmentId = organization.OrganizationId,
+                        IsActive=true
                     };
                     var result = await _userManager.CreateAsync(user, dto.Password);
                     if (!result.Succeeded)

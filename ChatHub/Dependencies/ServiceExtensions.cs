@@ -24,9 +24,7 @@ namespace ChatHub.Dependencies
                     policy
                 .AllowAnyOrigin()
                 .AllowAnyHeader()
-                .AllowAnyMethod()
-                .WithHeaders(HeaderNames.AccessControlRequestHeaders, HeaderNames.AccessControlAllowOrigin, HeaderNames.AccessControlAllowCredentials, HeaderNames.AccessControlAllowMethods).
-                SetIsOriginAllowed(policy => new Uri(policy).Host == "http://localhost:3000").WithHeaders("Delete");
+                .AllowAnyMethod();
                 });
             });
         }

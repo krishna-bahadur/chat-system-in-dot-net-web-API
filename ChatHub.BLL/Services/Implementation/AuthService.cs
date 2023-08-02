@@ -1,6 +1,8 @@
 ﻿using ChatHub.BLL.DTOs;
 using ChatHub.BLL.Services.Interfaces;
 using ChatHub.DAL.Datas;
+using ChatHub.DAL.Entities;
+using ChatHub.DAL.Repository.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -22,6 +24,8 @@ namespace ChatHub.BLL.Services.Implementation
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly IRepository<Department> _departmentRepository;
+
         private readonly ChatHubDbContext _dbContext;
         private readonly IConfiguration _configuration;
         private readonly ITokenService _tokenService;
@@ -31,7 +35,8 @@ namespace ChatHub.BLL.Services.Implementation
             RoleManager<IdentityRole> roleManager,
             IConfiguration configuration,
             ITokenService tokenService,
-            ChatHubDbContext dbContext
+            ChatHubDbContext dbContext,
+            IRepository<Department> departmentRepository
             )
         {
             _userManager = userManager;
@@ -39,6 +44,7 @@ namespace ChatHub.BLL.Services.Implementation
             _configuration = configuration;
             _tokenService = tokenService;
             _dbContext = dbContext;
+            _departmentRepository = departmentRepository;
         }
 
 
@@ -365,6 +371,42 @@ namespace ChatHub.BLL.Services.Implementation
                 return new ServiceResult<object>(true);
             }
             return new ServiceResult<object>(false);
+        }
+
+        public async Task<ServiceResult<List<RegisterModel>>> GetUsersByDeparmentId(string DepartmentId)
+        {
+            List<RegisterModel> registerModels = new List<RegisterModel>();
+            List<ApplicationUser> users = new List<ApplicationUser>();
+            if (!string.IsNullOrEmpty(DepartmentId))
+            {
+                if(await _departmentRepository.CheckIdIfExists(x=>x.DepartmentId == DepartmentId))
+                {
+                    users = await _userManager.Users.Where(x => x.DepartmentId == DepartmentId && x.IsActive && x.UserName != _tokenService.GetUsername()).ToListAsync();
+                }
+                else
+                {
+                    users = await _userManager.Users.Where(x => x.IsActive && x.UserName != _tokenService.GetUsername()).ToListAsync();
+                }
+                if(users.Count > 0)
+                {
+                    foreach (var user in users)
+                    {
+                        var departmentName = (await _dbContext.Departments.Where(x => x.DepartmentId == user.DepartmentId).FirstOrDefaultAsync())?.DepartmentName ?? null;
+                        registerModels.Add(new RegisterModel()
+                        {
+                            Fullname = user.FullName,
+                            UserId = user.Id,
+                            Username = user.UserName,
+                            Email = user.Email,
+                            DepartmentId = user.DepartmentId,
+                            DepartmentName = departmentName,
+                            RoleName = (await _userManager.GetRolesAsync(user)).FirstOrDefault(),
+                            IsActive = user.IsActive,
+                        });
+                    }
+                }
+            }
+            return new ServiceResult<List<RegisterModel>>(true, registerModels);
         }
     }
 }

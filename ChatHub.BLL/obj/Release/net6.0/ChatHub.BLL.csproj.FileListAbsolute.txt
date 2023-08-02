@@ -1,0 +1,15 @@
+D:\BCA\BCA VIII\Project\ChatHub\ChatHub.BLL\bin\Release\net6.0\ChatHub.BLL.deps.json
+D:\BCA\BCA VIII\Project\ChatHub\ChatHub.BLL\bin\Release\net6.0\ChatHub.BLL.dll
+D:\BCA\BCA VIII\Project\ChatHub\ChatHub.BLL\bin\Release\net6.0\ChatHub.BLL.pdb
+D:\BCA\BCA VIII\Project\ChatHub\ChatHub.BLL\bin\Release\net6.0\ChatHub.DAL.dll
+D:\BCA\BCA VIII\Project\ChatHub\ChatHub.BLL\bin\Release\net6.0\ChatHub.DAL.pdb
+D:\BCA\BCA VIII\Project\ChatHub\ChatHub.BLL\obj\Release\net6.0\ChatHub.BLL.csproj.AssemblyReference.cache
+D:\BCA\BCA VIII\Project\ChatHub\ChatHub.BLL\obj\Release\net6.0\ChatHub.BLL.GeneratedMSBuildEditorConfig.editorconfig
+D:\BCA\BCA VIII\Project\ChatHub\ChatHub.BLL\obj\Release\net6.0\ChatHub.BLL.AssemblyInfoInputs.cache
+D:\BCA\BCA VIII\Project\ChatHub\ChatHub.BLL\obj\Release\net6.0\ChatHub.BLL.AssemblyInfo.cs
+D:\BCA\BCA VIII\Project\ChatHub\ChatHub.BLL\obj\Release\net6.0\ChatHub.BLL.csproj.CoreCompileInputs.cache
+D:\BCA\BCA VIII\Project\ChatHub\ChatHub.BLL\obj\Release\net6.0\ChatHub.BLL.csproj.CopyComplete
+D:\BCA\BCA VIII\Project\ChatHub\ChatHub.BLL\obj\Release\net6.0\ChatHub.BLL.dll
+D:\BCA\BCA VIII\Project\ChatHub\ChatHub.BLL\obj\Release\net6.0\refint\ChatHub.BLL.dll
+D:\BCA\BCA VIII\Project\ChatHub\ChatHub.BLL\obj\Release\net6.0\ChatHub.BLL.pdb
+D:\BCA\BCA VIII\Project\ChatHub\ChatHub.BLL\obj\Release\net6.0\ref\ChatHub.BLL.dll
