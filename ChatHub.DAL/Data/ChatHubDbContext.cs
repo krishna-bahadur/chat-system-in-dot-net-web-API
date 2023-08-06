@@ -14,6 +14,7 @@ namespace ChatHub.DAL.Datas
         public ChatHubDbContext(DbContextOptions<ChatHubDbContext> options) : base(options) { }
         public DbSet<Organization> Organizations { get; set; }
         public DbSet<Department> Departments { get; set; }
+        public DbSet<Message> Messages { get; set; }
 
     }
 }

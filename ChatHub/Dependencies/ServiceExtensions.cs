@@ -18,15 +18,15 @@ namespace ChatHub.Dependencies
         {
             services.AddCors(options =>
             {
-                options.AddDefaultPolicy(
-                policy =>
+                options.AddDefaultPolicy(builder =>
                 {
-                    policy
-                .AllowAnyOrigin()
-                .AllowAnyHeader()
-                .AllowAnyMethod();
+                    builder.WithOrigins("https://chathub.hamrosystem.com", "http://localhost:3000")
+                    .AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .AllowCredentials();
                 });
             });
+
         }
         //Default Identity Password setting
         public static void ConfigureIdentityPassword(this IServiceCollection services)
@@ -97,6 +97,7 @@ namespace ChatHub.Dependencies
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IDepartmentService, DepartmentService>();
             services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IMessageServices, MessageServices>();
         }
     }
 }

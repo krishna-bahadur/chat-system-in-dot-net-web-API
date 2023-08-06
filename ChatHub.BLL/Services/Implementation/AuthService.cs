@@ -25,6 +25,7 @@ namespace ChatHub.BLL.Services.Implementation
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IRepository<Department> _departmentRepository;
+        private readonly IUploadImages _uploadImages;
 
         private readonly ChatHubDbContext _dbContext;
         private readonly IConfiguration _configuration;
@@ -36,7 +37,8 @@ namespace ChatHub.BLL.Services.Implementation
             IConfiguration configuration,
             ITokenService tokenService,
             ChatHubDbContext dbContext,
-            IRepository<Department> departmentRepository
+            IRepository<Department> departmentRepository,
+            IUploadImages uploadImages
             )
         {
             _userManager = userManager;
@@ -45,6 +47,7 @@ namespace ChatHub.BLL.Services.Implementation
             _tokenService = tokenService;
             _dbContext = dbContext;
             _departmentRepository = departmentRepository;
+            _uploadImages = uploadImages;
         }
 
 
@@ -291,6 +294,7 @@ namespace ChatHub.BLL.Services.Implementation
                         DepartmentName = departmentName,
                         RoleName= (await _userManager.GetRolesAsync(user)).FirstOrDefault(),
                         IsActive = user.IsActive,
+                        ProfilePictureULR = user.ProfilePictureURL,
                     });
                 }
                 return new ServiceResult<List<RegisterModel>>(true, registerModels);
@@ -309,6 +313,7 @@ namespace ChatHub.BLL.Services.Implementation
 
                 if (roleId != null)
                 {
+                    var department = await _departmentRepository.GetByIdAsync(user.DepartmentId);
                     RegisterModel registerModel = new RegisterModel()
                     {
                         Fullname = user.FullName,
@@ -317,6 +322,9 @@ namespace ChatHub.BLL.Services.Implementation
                         Email = user.Email,
                         RoleId = roleId.Id,
                         DepartmentId = user.DepartmentId,
+                        DepartmentName = department?.DepartmentName,
+                        Phone = user.PhoneNumber,
+                        ProfilePictureULR = user.ProfilePictureURL,
                     };
                     return new ServiceResult<RegisterModel>(true, registerModel);
                 }
@@ -402,11 +410,72 @@ namespace ChatHub.BLL.Services.Implementation
                             DepartmentName = departmentName,
                             RoleName = (await _userManager.GetRolesAsync(user)).FirstOrDefault(),
                             IsActive = user.IsActive,
+                            ProfilePictureULR=user.ProfilePictureURL,
                         });
                     }
                 }
             }
             return new ServiceResult<List<RegisterModel>>(true, registerModels);
+        }
+
+        public async Task<ServiceResult<ChangePasswordDTO>> ChangePassword(ChangePasswordDTO changePasswordDTO)
+        {
+            var user =await _userManager.FindByNameAsync(_tokenService.GetUsername());
+            if(user is not null)
+            {
+                var changePasswordResult = await _userManager.ChangePasswordAsync(user, changePasswordDTO.CurrentPassword, changePasswordDTO.NewPassword);
+                if (!changePasswordResult.Succeeded)
+                {
+                    return new ServiceResult<ChangePasswordDTO>(false, errors: new[] {changePasswordResult.Errors.FirstOrDefault().Description.ToString()});
+                }
+            }
+            return new ServiceResult<ChangePasswordDTO>(true);
+        }
+
+        public async Task<ServiceResult<UserDTO>> UpdateUser(UserDTO userDTO)
+        {
+            using (var dbContext = await _dbContext.Database.BeginTransactionAsync()) {
+                try
+                {
+                    var userId = _tokenService.GetUserId();
+                    if (!string.IsNullOrEmpty(userId))
+                    {
+                        var user = await _userManager.FindByIdAsync(userId);
+                        if (user is not null)
+                        {
+                            if (!string.IsNullOrEmpty(userDTO.Fullname))
+                            {
+                                user.FullName = userDTO.Fullname;
+                            }
+                            if (!string.IsNullOrEmpty(userDTO.Email))
+                            {
+                                user.Email = userDTO.Email;
+                            }
+                            if (!string.IsNullOrEmpty(userDTO.Phone))
+                            {
+                                user.PhoneNumber = userDTO.Phone;
+                            }
+                            if (userDTO.ProfilePicture != null)
+                            {
+                                user.ProfilePictureURL = await _uploadImages.UploadImageAsync(userDTO.ProfilePicture);
+                                user.ProfilePictureName = userDTO.ProfilePicture.FileName;
+                            };
+                            var user1 = await _userManager.UpdateAsync(user);
+                            await dbContext.CommitAsync();
+                            await dbContext.DisposeAsync();
+                            return new ServiceResult<UserDTO>(true);
+
+                        }
+                    }
+                    return new ServiceResult<UserDTO>(false);
+                }
+                catch(Exception ex)
+                {
+                    await dbContext.RollbackAsync();
+                    await dbContext.DisposeAsync();
+                    return new ServiceResult<UserDTO>(false, errors: new[] {ex.Message} );
+                }
+            }
         }
     }
 }

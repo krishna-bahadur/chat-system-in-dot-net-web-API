@@ -1,4 +1,5 @@
-﻿using ChatHub.BLL.Services.Interfaces;
+﻿using ChatHub.BLL.DTOs;
+using ChatHub.BLL.Services.Interfaces;
 using ChatHub.DAL.Datas;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -13,10 +14,12 @@ namespace ChatHub.BLL.Services.Implementation
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private static readonly Dictionary<string, string> userConnectionMap = new Dictionary<string, string>();
+        private readonly IMessageServices _messageServices;
 
-        public ChatServices(UserManager<ApplicationUser> userManager)
+        public ChatServices(UserManager<ApplicationUser> userManager, IMessageServices messageServices)
         {
             _userManager = userManager;
+            _messageServices = messageServices;
         }
 
         public async Task SendMessage(string senderUsername, string receiverUsername, string message)
@@ -25,19 +28,15 @@ namespace ChatHub.BLL.Services.Implementation
             {
                 var sender = await _userManager.FindByNameAsync(senderUsername);
                 var recipientConnectionId = GetConnectionId(receiverUsername);
-                //var receiver = await _userManager.FindByNameAsync(connectionId);
-                if (sender != null && recipientConnectionId != null)
+                await SaveMessage(senderUsername, receiverUsername, message);
+                if (recipientConnectionId != null)
                 {
                     await Clients.Client(recipientConnectionId).SendAsync("ReceiveMessage", senderUsername, receiverUsername, message);
-                    var senderConnectionId = GetConnectionId(senderUsername);
-                    if (senderConnectionId != null)
-                    {
-                        await Clients.Client(senderConnectionId).SendAsync("ReceiveMessage", senderUsername, receiverUsername, message);
-                    }
                 }
-                else
+                var senderConnectionId = GetConnectionId(senderUsername);
+                if (senderConnectionId != null)
                 {
-                    // Handle invalid receiver or self-messaging
+                    await Clients.Client(senderConnectionId).SendAsync("ReceiveMessage", senderUsername, receiverUsername, message);
                 }
             }
             catch (Exception ex)
@@ -78,6 +77,27 @@ namespace ChatHub.BLL.Services.Implementation
                 return connectionId;
             }
             return null; // Return null if the username is not found (user 2 is not connected)
+        }
+
+        private async Task<string> SaveMessage(string senderUsername, string receiverUsername, string message)
+        {
+            MessageDTO messageDTO = new MessageDTO()
+            {
+                SenderUsername = senderUsername,
+                ReceiverUsername = receiverUsername,
+                Messages = message,
+            };
+            var m  = await _messageServices.CreateMessage(messageDTO);
+            return null;
+        }
+
+        public bool IsUserOnline(string username)
+        {
+            if(!string.IsNullOrEmpty(username))
+            {
+                return userConnectionMap.ContainsKey(username);
+            }
+            return false;
         }
     }
 }

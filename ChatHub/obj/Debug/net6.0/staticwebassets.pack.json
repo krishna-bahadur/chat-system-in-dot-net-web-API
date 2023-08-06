@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\Images\\19e3990c-3ab2-41b9-8665-cb473e9cf676-siliconsoft.png"
     },
     {
+      "Id": "D:\\BCA\\BCA VIII\\Project\\ChatHub\\ChatHub\\wwwroot\\Images\\1b492ba2-582a-4bf3-9166-bbef599bba9e-Krishna.jpg",
+      "PackagePath": "staticwebassets\\Images\\1b492ba2-582a-4bf3-9166-bbef599bba9e-Krishna.jpg"
+    },
+    {
       "Id": "D:\\BCA\\BCA VIII\\Project\\ChatHub\\ChatHub\\wwwroot\\Images\\625880a0-6689-464a-847a-a75588a6d9c5-siliconsoft.png",
       "PackagePath": "staticwebassets\\Images\\625880a0-6689-464a-847a-a75588a6d9c5-siliconsoft.png"
     },
@@ -17,12 +21,24 @@
       "PackagePath": "staticwebassets\\Images\\93292702-4d0f-4f81-81d3-77879f66ca63-Screenshot_1.png"
     },
     {
+      "Id": "D:\\BCA\\BCA VIII\\Project\\ChatHub\\ChatHub\\wwwroot\\Images\\9ac6030d-5ab7-4555-8176-3057f33cfbe3-swimming.jpg",
+      "PackagePath": "staticwebassets\\Images\\9ac6030d-5ab7-4555-8176-3057f33cfbe3-swimming.jpg"
+    },
+    {
       "Id": "D:\\BCA\\BCA VIII\\Project\\ChatHub\\ChatHub\\wwwroot\\Images\\a364599c-11b2-42e8-9325-577fbd80ab66-Screenshot_1.png",
       "PackagePath": "staticwebassets\\Images\\a364599c-11b2-42e8-9325-577fbd80ab66-Screenshot_1.png"
     },
     {
       "Id": "D:\\BCA\\BCA VIII\\Project\\ChatHub\\ChatHub\\wwwroot\\Images\\b039d42b-a4f4-4318-bd7b-e35b1d1684fc-siliconsoft.png",
       "PackagePath": "staticwebassets\\Images\\b039d42b-a4f4-4318-bd7b-e35b1d1684fc-siliconsoft.png"
+    },
+    {
+      "Id": "D:\\BCA\\BCA VIII\\Project\\ChatHub\\ChatHub\\wwwroot\\Images\\cccc95c1-0b29-4336-8a81-a23751c0e92b-swimming.jpg",
+      "PackagePath": "staticwebassets\\Images\\cccc95c1-0b29-4336-8a81-a23751c0e92b-swimming.jpg"
+    },
+    {
+      "Id": "D:\\BCA\\BCA VIII\\Project\\ChatHub\\ChatHub\\wwwroot\\Images\\e092005d-7aa3-407c-950f-0d48a86ab6fa-Krishna.jpg",
+      "PackagePath": "staticwebassets\\Images\\e092005d-7aa3-407c-950f-0d48a86ab6fa-Krishna.jpg"
     },
     {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.ChatHub.Microsoft.AspNetCore.StaticWebAssets.props",

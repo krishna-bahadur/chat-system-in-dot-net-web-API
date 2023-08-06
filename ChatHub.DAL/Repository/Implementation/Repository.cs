@@ -62,6 +62,10 @@ namespace ChatHub.DAL.Repository.Implementation
         {
             return await _context.Set<T>().Where(predicate).OrderByDescending(orderByDesc).ToListAsync();
         }
+        public async Task<List<T>> OrderBy(Expression<Func<T, bool>> predicate, Expression<Func<T, DateTime?>> orderBy)
+        {
+            return await _context.Set<T>().Where(predicate).OrderBy(orderBy).ToListAsync();
+        }
 
         public async Task<bool> AnyAsync()
         {

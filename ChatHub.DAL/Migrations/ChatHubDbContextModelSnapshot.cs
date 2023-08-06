@@ -73,6 +73,12 @@ namespace ChatHub.DAL.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("ProfilePictureName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProfilePictureURL")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("RefreshToken")
                         .HasColumnType("nvarchar(max)");
 
@@ -130,6 +136,40 @@ namespace ChatHub.DAL.Migrations
                     b.HasIndex("OrganizationId");
 
                     b.ToTable("Departments");
+                });
+
+            modelBuilder.Entity("ChatHub.DAL.Entities.Message", b =>
+                {
+                    b.Property<string>("MessageId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DepartmentId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FileURL")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeletedBySender")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Messages")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ReceiverUsername")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SenderUsername")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("MessageId");
+
+                    b.ToTable("Messages");
                 });
 
             modelBuilder.Entity("ChatHub.DAL.Entities.Organization", b =>

@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -134,85 +135,17 @@ namespace ChatHub.Controllers
             }
             return StatusCode(StatusCodes.Status200OK, result.Data);
         }
-
-
-        //        [HttpPost]
-        //        [Route("register-admin")]
-        //        public async Task<IActionResult> RegisterAdmin([FromBody] RegisterModel model)
-        //        {
-        //            var userExists = await _userManager.FindByNameAsync(model.Username);
-        //            if (userExists != null)
-        //                return StatusCode(StatusCodes.Status500InternalServerError, new ResponseDTO { Status = "Error", Message = "User already exists!" });
-
-        //            ApplicationUser user = new()
-        //            {
-        //                Email = model.Email,
-        //                SecurityStamp = Guid.NewGuid().ToString(),
-        //                UserName = model.Username
-        //            };
-        //            var result = await _userManager.CreateAsync(user, model.Password);
-        //            if (!result.Succeeded)
-        //                return StatusCode(StatusCodes.Status500InternalServerError, new ResponseDTO { Status = "Error", Message = "User creation failed! Please check user details and try again." });
-
-        //            if (!await _roleManager.RoleExistsAsync(UserRoles.admin))
-        //                await _roleManager.CreateAsync(new IdentityRole(UserRoles.admin));
-        //            if (!await _roleManager.RoleExistsAsync(UserRoles.user))
-        //                await _roleManager.CreateAsync(new IdentityRole(UserRoles.user));
-
-        //            if (await _roleManager.RoleExistsAsync(UserRoles.admin))
-        //            {
-        //                await _userManager.AddToRoleAsync(user, UserRoles.admin);
-        //            }
-        //            if (await _roleManager.RoleExistsAsync(UserRoles.admin))
-        //            {
-        //                await _userManager.AddToRoleAsync(user, UserRoles.user);
-        //            }
-        //            return Ok(new ResponseDTO { Status = "Success", Message = "User created successfully!" });
-        //        }
-
-        //        [HttpPost]
-        //        [Route("refresh-token")]
-        //        public async Task<IActionResult> RefreshToken(TokenModel tokenModel)
-        //        {
-        //            if (tokenModel is null)
-        //            {
-        //                return BadRequest("Invalid client request");
-        //            }
-
-        //            string? accessToken = tokenModel.AccessToken;
-        //            string? refreshToken = tokenModel.RefreshToken;
-
-        //            var principal = GetPrincipalFromExpiredToken(accessToken);
-        //            if (principal == null)
-        //            {
-        //                return BadRequest("Invalid access token or refresh token");
-        //            }
-
-        //#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
-        //#pragma warning disable CS8602 // Dereference of a possibly null reference.
-        //            string username = principal.Identity.Name;
-        //#pragma warning restore CS8602 // Dereference of a possibly null reference.
-        //#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
-
-        //            var user = await _userManager.FindByNameAsync(username);
-
-        //            if (user == null || user.RefreshToken != refreshToken || user.RefreshTokenExpiryTime <= DateTime.Now)
-        //            {
-        //                return BadRequest("Invalid access token or refresh token");
-        //            }
-
-        //            var newAccessToken = CreateToken(principal.Claims.ToList());
-        //            var newRefreshToken = GenerateRefreshToken();
-
-        //            user.RefreshToken = newRefreshToken;
-        //            await _userManager.UpdateAsync(user);
-
-        //            return new ObjectResult(new
-        //            {
-        //                accessToken = new JwtSecurityTokenHandler().WriteToken(newAccessToken),
-        //                refreshToken = newRefreshToken
-        //            });
-        //        }
+        [HttpPost]
+        [Route("ChangePassword")]
+        public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordDTO changePasswordDTO)
+        {
+            var result = await _authService.ChangePassword(changePasswordDTO);
+            if (!result.Success)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, result.Errors);
+            }
+            return StatusCode(StatusCodes.Status200OK, result.Data);
+        }
 
         [HttpGet]
         [Route("logout")]
@@ -225,21 +158,16 @@ namespace ChatHub.Controllers
             }
             return StatusCode(StatusCodes.Status200OK, "success");
         }
-
-        //        [Authorize]
-        //        [HttpPost]
-        //        [Route("revoke-all")]
-        //        public async Task<IActionResult> RevokeAll()
-        //        {
-        //            var users = _userManager.Users.ToList();
-        //            foreach (var user in users)
-        //            {
-        //                user.RefreshToken = null;
-        //                await _userManager.UpdateAsync(user);
-        //            }
-
-        //            return NoContent();
-        //        }
-
+        [HttpPatch]
+        [Route("UpdateUser")]
+        public async Task<IActionResult> UpdateUser([FromForm] UserDTO userDTO)
+        {
+            var result = await _authService.UpdateUser(userDTO);
+            if (!result.Success)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, result.Errors);
+            }
+            return StatusCode(StatusCodes.Status200OK);
+        }
     }
 }

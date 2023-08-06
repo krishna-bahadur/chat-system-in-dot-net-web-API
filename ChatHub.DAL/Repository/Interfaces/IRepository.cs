@@ -21,6 +21,7 @@ namespace ChatHub.DAL.Repository.Interfaces
         bool CheckTokenIfExist(Expression<Func<T, bool>> predicate);
         Task<IEnumerable<T>> OrderByAsync(Expression<Func<T, bool>> predicate);
         Task<IEnumerable<T>> OrderByDescAsync(Expression<Func<T, bool>> predicate, Expression<Func<T, int?>> orderByDesc);
+        Task<List<T>> OrderBy(Expression<Func<T, bool>> predicate, Expression<Func<T, DateTime?>> orderBy);
         Task<List<T>> WhereAsync(Expression<Func<T, bool>> expression);
 
     }

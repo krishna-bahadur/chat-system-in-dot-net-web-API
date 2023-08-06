@@ -20,7 +20,8 @@ namespace ChatHub.BLL.Services.Interfaces
         Task<ServiceResult<List<RegisterModel>>> GetUsersByDeparmentId(string param);
         Task<ServiceResult<string>> GetActiveUsers();
         Task<ServiceResult<object>> Logout();
+        Task<ServiceResult<ChangePasswordDTO>> ChangePassword(ChangePasswordDTO changePasswordDTO);
         Task<ServiceResult<RegisterModel>> ChangeUserStatus(string Id);
-        Task<ServiceResult<object>> RefreshToken(TokenModel tokenModel);
+        Task<ServiceResult<UserDTO>> UpdateUser(UserDTO userDTO);
     }
 }

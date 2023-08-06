@@ -26,6 +26,8 @@ namespace ChatHub.BLL.DTOs
         public string? RoleName { get; set; }
         public bool IsActive { get; set; }
         public string? Fullname { get; set; }
+        public string? Phone { get; set; }
+        public string? ProfilePictureULR { get; set; }
 
     }
 }

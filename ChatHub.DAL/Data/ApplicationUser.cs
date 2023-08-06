@@ -15,6 +15,8 @@ namespace ChatHub.DAL.Datas
         public DateTime RefreshTokenExpiryTime { get; set; }
         public bool IsActive { get; set; }
         public string? DepartmentId { get; set; }
+        public string? ProfilePictureName { get; set; }
+        public string? ProfilePictureURL { get; set; }
 
     }
 }
