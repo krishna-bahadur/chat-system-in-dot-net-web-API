@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "xjw1nET5B+YDpH/IxsSu7aPBiSHBspPO+6saJfb8x60=",
+  "Hash": "m/vzp+Xg52D9xBBlcXn18tlk138q24yw1fwQRR0FzzQ=",
   "Source": "ChatHub",
   "BasePath": "_content/ChatHub",
   "Mode": "Default",
@@ -66,6 +66,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\625880a0-6689-464a-847a-a75588a6d9c5-siliconsoft.png"
+    },
+    {
+      "Identity": "D:\\BCA\\BCA VIII\\Project\\ChatHub\\ChatHub\\wwwroot\\Images\\71fa9166-99b0-49eb-bd27-4c171ddaefed-Krishna.jpg",
+      "SourceId": "ChatHub",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\BCA\\BCA VIII\\Project\\ChatHub\\ChatHub\\wwwroot\\",
+      "BasePath": "_content/ChatHub",
+      "RelativePath": "Images/71fa9166-99b0-49eb-bd27-4c171ddaefed-Krishna.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\71fa9166-99b0-49eb-bd27-4c171ddaefed-Krishna.jpg"
     },
     {
       "Identity": "D:\\BCA\\BCA VIII\\Project\\ChatHub\\ChatHub\\wwwroot\\Images\\772ab916-1405-498c-ae70-efd03fd2e4ce-siliconsoft.png",

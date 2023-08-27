@@ -18,6 +18,7 @@ namespace ChatHub.BLL.Services.Interfaces
         Task<ServiceResult<List<RoleDTO>>> GetRoles();
         Task<ServiceResult<List<RegisterModel>>> GetAllUsers(string param);
         Task<ServiceResult<List<RegisterModel>>> GetUsersByDeparmentId(string param);
+        Task<ServiceResult<List<UserDTO>>> GetUsersByChatTimestamp(string DepartmentId);
         Task<ServiceResult<string>> GetActiveUsers();
         Task<ServiceResult<object>> Logout();
         Task<ServiceResult<ChangePasswordDTO>> ChangePassword(ChangePasswordDTO changePasswordDTO);

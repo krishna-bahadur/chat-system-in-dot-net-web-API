@@ -9,7 +9,8 @@ namespace ChatHub.BLL.Services.Interfaces
 {
     public interface IMessageServices
     {
-        Task<ServiceResult<List<MessageDTO>>> GetMessageOfPrivateChat(string senderusername, string receiverusername);
+        Task<ServiceResult<List<MessageDTO>>> GetMessageOfPrivateChat(string? senderusername, string receiverusername);
+        Task<ServiceResult<List<MessageDTO>>> GetLastMessageOfPrivateChat(string? senderusername);
         Task<ServiceResult<MessageDTO>> CreateMessage(MessageDTO messageDTO);
     }
 }

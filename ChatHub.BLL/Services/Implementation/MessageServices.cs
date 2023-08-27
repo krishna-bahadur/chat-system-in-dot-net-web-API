@@ -53,6 +53,21 @@ namespace ChatHub.BLL.Services.Implementation
             }
         }
 
+
+
+        public async Task<ServiceResult<List<MessageDTO>>> GetLastMessageOfPrivateChat(string? senderusername)
+        {
+            //List<MessageDTO> messageDTOs = new List<MessageDTO>();
+            //List<Message> messages = new List<Message>();
+            //if (!string.IsNullOrEmpty(senderusername))
+            //{
+            //    messages = await _messageRepository.OrderBy(x => x.ReceiverUsername == senderusername && !x.IsDeleted && !x.IsDeletedBySender, x => x.DateTime);
+
+            //}
+            throw new NotImplementedException();
+        }
+
+
         public async Task<ServiceResult<List<MessageDTO>>> GetMessageOfPrivateChat(string senderusername, string? receiverusername)
         {
             List<MessageDTO> messageDTOs = new List<MessageDTO>();
@@ -61,7 +76,7 @@ namespace ChatHub.BLL.Services.Implementation
             {
                 messages = await _messageRepository.OrderBy(x => x.SenderUsername == senderusername && x.ReceiverUsername == receiverusername || x.SenderUsername == receiverusername && x.ReceiverUsername == senderusername && !x.IsDeleted && !x.IsDeletedBySender, x => x.DateTime);
             }
-            if(messages.Count > 0)
+            if (messages.Count > 0)
             {
                 foreach (var message in messages)
                 {

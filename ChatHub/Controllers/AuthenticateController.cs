@@ -135,6 +135,17 @@ namespace ChatHub.Controllers
             }
             return StatusCode(StatusCodes.Status200OK, result.Data);
         }
+        [HttpGet]
+        [Route("GetUsersByChatTimestamp/{DepartmentId}")]
+        public async Task<IActionResult> GetUsersByChatTimestamp(string DepartmentId)
+        {
+            var result = await _authService.GetUsersByChatTimestamp(DepartmentId);
+            if (!result.Success)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+            return StatusCode(StatusCodes.Status200OK, result.Data);
+        }
         [HttpPost]
         [Route("ChangePassword")]
         public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordDTO changePasswordDTO)

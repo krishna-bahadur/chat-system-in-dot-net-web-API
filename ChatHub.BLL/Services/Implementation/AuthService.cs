@@ -477,5 +477,51 @@ namespace ChatHub.BLL.Services.Implementation
                 }
             }
         }
+
+        public async Task<ServiceResult<List<UserDTO>>> GetUsersByChatTimestamp(string DepartmentId)
+        {
+            List<UserDTO> userDTOs = new List<UserDTO>();
+            List<ApplicationUser> users = new List<ApplicationUser>();
+
+            if (await _departmentRepository.CheckIdIfExists(x => x.DepartmentId == DepartmentId))
+            {
+                users = await _userManager.Users.Where(x => x.DepartmentId == DepartmentId && x.IsActive && x.UserName != _tokenService.GetUsername()).ToListAsync();
+            }
+            else
+            {
+                users = await _userManager.Users.Where(x => x.IsActive && x.UserName != _tokenService.GetUsername()).ToListAsync();
+            }
+
+            var usersWithChatTimestamp = new List<(ApplicationUser User, DateTime Timestamp, string? lastmessage, DateTime? lastMessageDateTime)>();
+
+            foreach (var user in users)
+            {
+                var mostRecentMessage = await _dbContext.Messages
+                    .Where(x => x.SenderUsername == _tokenService.GetUsername() && x.ReceiverUsername == user.UserName || x.SenderUsername == user.UserName && x.ReceiverUsername == _tokenService.GetUsername() && !x.IsDeleted && !x.IsDeletedBySender)
+                    .OrderByDescending(m => m.DateTime)
+                    .FirstOrDefaultAsync();
+
+                var timestamp = mostRecentMessage?.DateTime ?? DateTime.MinValue;
+                usersWithChatTimestamp.Add((user, timestamp, mostRecentMessage?.Messages, mostRecentMessage?.DateTime));
+            }
+
+            var sortedUsers = usersWithChatTimestamp.OrderByDescending(u => u.Timestamp).Select(u => new {u.User,u.lastmessage,u.lastMessageDateTime});
+            foreach (var sorteduser in sortedUsers)
+            {
+                userDTOs.Add(new UserDTO()
+                {
+                    Fullname = sorteduser.User.FullName,
+                    UserId = sorteduser.User.Id,
+                    Username = sorteduser.User.UserName,
+                    Email = sorteduser.User.Email,
+                    DepartmentId = sorteduser.User.DepartmentId,
+                    IsActive = sorteduser.User.IsActive,
+                    ProfilePictureULR = sorteduser.User.ProfilePictureURL,
+                    LastMessage = sorteduser.lastmessage,
+                    LastMessageDateTime = sorteduser.lastMessageDateTime
+                });
+            }
+            return new ServiceResult<List<UserDTO>>(true, userDTOs);
+        }
     }
 }

@@ -2,8 +2,11 @@
 using ChatHub.BLL.Services.Interfaces;
 using ChatHub.DAL.Datas;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
+using System;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 
@@ -28,15 +31,16 @@ namespace ChatHub.BLL.Services.Implementation
             {
                 var sender = await _userManager.FindByNameAsync(senderUsername);
                 var recipientConnectionId = GetConnectionId(receiverUsername);
+                var datetime = DateTime.Now;
                 await SaveMessage(senderUsername, receiverUsername, message);
                 if (recipientConnectionId != null)
                 {
-                    await Clients.Client(recipientConnectionId).SendAsync("ReceiveMessage", senderUsername, receiverUsername, message);
+                    await Clients.Client(recipientConnectionId).SendAsync("ReceiveMessage", senderUsername, receiverUsername, message, datetime);
                 }
                 var senderConnectionId = GetConnectionId(senderUsername);
                 if (senderConnectionId != null)
                 {
-                    await Clients.Client(senderConnectionId).SendAsync("ReceiveMessage", senderUsername, receiverUsername, message);
+                    await Clients.Client(senderConnectionId).SendAsync("ReceiveMessage", senderUsername, receiverUsername, message, datetime);
                 }
             }
             catch (Exception ex)
@@ -93,9 +97,9 @@ namespace ChatHub.BLL.Services.Implementation
 
         public bool IsUserOnline(string username)
         {
-            if(!string.IsNullOrEmpty(username))
+            if (!string.IsNullOrEmpty(username))
             {
-                return userConnectionMap.ContainsKey(username);
+                return userConnectionMap.TryGetValue(username, out _);
             }
             return false;
         }

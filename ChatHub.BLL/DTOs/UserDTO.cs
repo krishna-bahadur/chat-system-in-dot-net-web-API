@@ -22,5 +22,8 @@ namespace ChatHub.BLL.DTOs
         public string? DepartmentName { get; set; }
         public string? RoleName { get; set; }
         public bool IsActive { get; set; }
+        public string? ProfilePictureULR { get; set; }
+        public string? LastMessage { get; set; }
+        public DateTime? LastMessageDateTime { get; set; }
     }
 }
