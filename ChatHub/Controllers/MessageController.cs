@@ -1,4 +1,5 @@
-﻿using ChatHub.BLL.Services.Interfaces;
+﻿using ChatHub.BLL.DTOs;
+using ChatHub.BLL.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -20,6 +21,19 @@ namespace ChatHub.Controllers
         public async Task<IActionResult> GetMessageOfPrivateChat(string senderusername, string receiverusername)
         {
             var result = await _messageServices.GetMessageOfPrivateChat(senderusername, receiverusername);
+            if (!result.Success)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+            return StatusCode(StatusCodes.Status200OK, result.Data);
+
+        }
+
+        [HttpPost]
+        [Route("SaveFile")]
+        public async Task<IActionResult> SaveFile([FromForm] FileDTO fileDTO)
+        {
+            var result = await _messageServices.SaveFile(fileDTO);
             if (!result.Success)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError);

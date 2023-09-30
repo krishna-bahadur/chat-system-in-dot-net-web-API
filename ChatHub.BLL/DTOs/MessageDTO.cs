@@ -12,7 +12,7 @@ namespace ChatHub.BLL.DTOs
         public string? Messages { get; set; }
         public string? SenderUsername { get; set; }
         public string? ReceiverUsername { get; set; }
-        public string? FileURL { get; set; }
+        public bool? IsFile { get; set; }
         public string? DepartmentId { get; set; }
         public DateTime DateTime { get; set; }
         public bool IsDeletedBySender { get; set; }

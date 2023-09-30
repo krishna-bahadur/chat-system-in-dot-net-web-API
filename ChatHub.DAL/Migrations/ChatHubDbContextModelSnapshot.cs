@@ -149,13 +149,13 @@ namespace ChatHub.DAL.Migrations
                     b.Property<string>("DepartmentId")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FileURL")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<bool>("IsDeletedBySender")
+                        .HasColumnType("bit");
+
+                    b.Property<bool?>("IsFile")
                         .HasColumnType("bit");
 
                     b.Property<string>("Messages")

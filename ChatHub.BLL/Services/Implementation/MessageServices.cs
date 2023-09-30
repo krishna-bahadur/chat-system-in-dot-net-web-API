@@ -3,6 +3,7 @@ using ChatHub.BLL.Services.Interfaces;
 using ChatHub.DAL.Datas;
 using ChatHub.DAL.Entities;
 using ChatHub.DAL.Repository.Interfaces;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,13 +17,14 @@ namespace ChatHub.BLL.Services.Implementation
         private readonly IRepository<Message> _messageRepository;
         private readonly ChatHubDbContext _dbContext;
         private readonly IEncryptionService _encryptionService;
+        private readonly IUploadImages _uploadImages;
 
-        public MessageServices(IRepository<Message> messageRepository, ChatHubDbContext dbContext, IEncryptionService encryptionService)
+        public MessageServices(IRepository<Message> messageRepository, ChatHubDbContext dbContext, IEncryptionService encryptionService, IUploadImages uploadImages)
         {
             _messageRepository = messageRepository;
             _dbContext = dbContext;
             _encryptionService = encryptionService;
-
+            _uploadImages = uploadImages;
         }
 
         public async Task<ServiceResult<MessageDTO>> CreateMessage(MessageDTO messageDTO)
@@ -37,7 +39,7 @@ namespace ChatHub.BLL.Services.Implementation
                         Messages = await _encryptionService.Encrypt(messageDTO?.Messages),
                         SenderUsername = messageDTO.SenderUsername,
                         ReceiverUsername = messageDTO.ReceiverUsername,
-                        FileURL = messageDTO.FileURL,
+                        IsFile = messageDTO.IsFile,
                         DepartmentId = messageDTO.DepartmentId,
                         DateTime = DateTime.Now,
                         IsDeletedBySender = false,
@@ -90,7 +92,7 @@ namespace ChatHub.BLL.Services.Implementation
                         Messages = await _encryptionService.Decrypt(message?.Messages),
                         SenderUsername = message.SenderUsername,
                         ReceiverUsername = message.ReceiverUsername,
-                        FileURL = message.FileURL,
+                        IsFile = message.IsFile,
                         DepartmentId = message.DepartmentId,
                         DateTime = message.DateTime,
                         IsDeletedBySender = message.IsDeletedBySender,
@@ -99,6 +101,17 @@ namespace ChatHub.BLL.Services.Implementation
                 }
             }
             return new ServiceResult<List<MessageDTO>>(true, messageDTOs);
+        }
+
+        public async Task<ServiceResult<string>> SaveFile(FileDTO fileDTO)
+        {
+            var FileUrl = "";
+            if (fileDTO.File != null)
+            {
+                FileUrl = await _uploadImages.UploadImageAsync(fileDTO.File);
+                return new ServiceResult<string>(true, FileUrl);
+            }
+            return new ServiceResult<string>(false);
         }
     }
 }

@@ -28,38 +28,10 @@ namespace ChatHub.BLL.Services.Implementation
             _messageServices = messageServices;
             _uploadImages = uploadImages;
         }
-        
+
 
         #region Chat
-        public async Task SendFile(string senderUsername, string receiverUsername, string base64String, string fileName, string fileExtension)
-        {
-            var sender = await _userManager.FindByNameAsync(senderUsername);
-            var recipientConnectionId = GetConnectionId(receiverUsername);
-            var datetime = DateTime.Now;
-            if(base64String != null)
-            {
-                var file = await _uploadImages.ConvertBase64ToIFormFile(base64String, fileName, fileExtension);
-                if(file != null)
-                {
-                    var fileURL = await _uploadImages.UploadImageAsync(file);
-                    if(fileURL != null)
-                    {
-                        await SaveFile(senderUsername, receiverUsername, fileURL);
-                        if (recipientConnectionId != null)
-                        {
-                            await Clients.Client(recipientConnectionId).SendAsync("ReceiveMessage", senderUsername, receiverUsername, "", fileURL, datetime, true);
-                        }
-                        var senderConnectionId = GetConnectionId(senderUsername);
-                        if (senderConnectionId != null)
-                        {
-                            await Clients.Client(senderConnectionId).SendAsync("ReceiveMessage", senderUsername, receiverUsername, "", fileURL, datetime, true);
-                        }
-                    }
-                }
-            }
-            
-        }
-            public async Task SendMessage(string senderUsername, string receiverUsername, string EncryptedMessage, string message)
+        public async Task SendMessage(string senderUsername, string receiverUsername, string EncryptedMessage, string message, bool? isFile)
         {
             try
             {
@@ -68,15 +40,15 @@ namespace ChatHub.BLL.Services.Implementation
                 var sender = await _userManager.FindByNameAsync(senderUsername);
                 var recipientConnectionId = GetConnectionId(receiverUsername);
                 var datetime = DateTime.Now;
-                await SaveMessage(senderUsername, receiverUsername, message);
+                await SaveMessage(senderUsername, receiverUsername, message, isFile);
                 if (recipientConnectionId != null)
                 {
-                    await Clients.Client(recipientConnectionId).SendAsync("ReceiveMessage", senderUsername, receiverUsername, EncryptedMessage, "", datetime, false);
+                    await Clients.Client(recipientConnectionId).SendAsync("ReceiveMessage", senderUsername, receiverUsername, EncryptedMessage, "", datetime, isFile);
                 }
                 var senderConnectionId = GetConnectionId(senderUsername);
                 if (senderConnectionId != null)
                 {
-                    await Clients.Client(senderConnectionId).SendAsync("ReceiveMessage", senderUsername, receiverUsername, EncryptedMessage, "", datetime, false);
+                    await Clients.Client(senderConnectionId).SendAsync("ReceiveMessage", senderUsername, receiverUsername, EncryptedMessage, "", datetime, isFile);
                 }
             }
             catch (Exception ex)
@@ -89,7 +61,7 @@ namespace ChatHub.BLL.Services.Implementation
         {
             var username = Context.User.Identity.Name;
             var user = users.SingleOrDefault(x => x.Username == username);
-            if(user != null)
+            if (user != null)
             {
                 user.ConnectionId = Context.ConnectionId;
             }
@@ -101,7 +73,7 @@ namespace ChatHub.BLL.Services.Implementation
                     ConnectionId = Context.ConnectionId
                 });
             }
-            
+
             return base.OnConnectedAsync();
         }
 
@@ -143,7 +115,7 @@ namespace ChatHub.BLL.Services.Implementation
             return key?.privateKey;
         }
 
-        private async Task<string> SaveMessage(string senderUsername, string receiverUsername, string message)
+        private async Task<string> SaveMessage(string senderUsername, string receiverUsername, string message,bool? IsFile)
         {
 
             MessageDTO messageDTO = new MessageDTO()
@@ -151,8 +123,9 @@ namespace ChatHub.BLL.Services.Implementation
                 SenderUsername = senderUsername,
                 ReceiverUsername = receiverUsername,
                 Messages = message,
+                IsFile = IsFile,
             };
-            var m  = await _messageServices.CreateMessage(messageDTO);
+            var m = await _messageServices.CreateMessage(messageDTO);
             return null;
         }
         private async Task<string> SaveFile(string senderUsername, string receiverUsername, string FileURL)
@@ -162,9 +135,10 @@ namespace ChatHub.BLL.Services.Implementation
             {
                 SenderUsername = senderUsername,
                 ReceiverUsername = receiverUsername,
-                FileURL = FileURL,
+                Messages = FileURL,
+                IsFile = true,
             };
-            var m  = await _messageServices.CreateMessage(messageDTO);
+            var m = await _messageServices.CreateMessage(messageDTO);
             return null;
         }
 
@@ -211,7 +185,7 @@ namespace ChatHub.BLL.Services.Implementation
             var user = users.FirstOrDefault(x => x.Username == receiver);
             if (user != null)
             {
-                await Clients.Client(user?.ConnectionId).SendAsync("ReceiveSignal",caller, receiver, signalData);
+                await Clients.Client(user?.ConnectionId).SendAsync("ReceiveSignal", caller, receiver, signalData);
             }
         }
         public async Task CallAcepted(string callerUsername, string receiverUsername)
@@ -226,14 +200,14 @@ namespace ChatHub.BLL.Services.Implementation
         public async Task StartCall(string caller, string receiver)
         {
             var user = users.FirstOrDefault(x => x.Username == receiver);
-            if(user != null)
+            if (user != null)
             {
                 await Clients.Client(user?.ConnectionId).SendAsync("IncomingCall", caller, receiver);
             }
             await Clients.Caller.SendAsync("CallFailed", receiver + " may be not available.");
         }
 
-      
+
         #endregion
 
 

@@ -1,0 +1,17 @@
+public ActionResult HouseMaintainRecommendation(HouseMaintainVM HRVM, List<HouseMaintainTableVM> HouseMaintainDetails)
+		{
+			//string msg = "";
+			HouseMaintainVM housemaintain = new HouseMaintainVM();
+
+			//var data = housemaintain.HouseMaintainTable.CurrentMunicipalityDropDown;
+			List<HouseMaintainTableVM> housemaintaintablelist = new List<HouseMaintainTableVM>();
+			HRVM.HouseMaintainDetails = HouseMaintainDetails;
+			TempData["HouseTable1"] = HouseMaintainDetails;
+            TempData.Keep();
+
+            List<string> Id = gharjaggaservice.CreateHouseMaintainRecommendation(HRVM);
+			HRVM.HouseMaintainRecommendationId = Id[0];
+			HRVM.InvoiceNo = Id[1];
+
+            return RedirectToAction("HouseMaintainRecommendationPrint", HRVM);
+		}
