@@ -533,5 +533,45 @@ namespace ChatHub.BLL.Services.Implementation
             }
             return new ServiceResult<List<UserDTO>>(true, userDTOs);
         }
+
+        public async Task<ServiceResult<object>> UpdateUserBySuperadmin(UserDTO userDTO)
+        {
+            using (var dbContext = await _dbContext.Database.BeginTransactionAsync())
+            {
+                try
+                {
+                    var user =await _userManager.FindByIdAsync(userDTO.UserId);
+                    if(user != null)
+                    {
+                        user.UserName = userDTO.Username;
+                        user.Email = userDTO.Email;
+                        user.DepartmentId = userDTO.DepartmentId;
+                    }
+                    var role = await _roleManager.FindByIdAsync(userDTO.RoleId);
+                    if (role == null)
+                    {
+                        return new ServiceResult<object>(false, errors: new[] { "Role was not found." });
+                    }
+
+                    await _userManager.AddToRoleAsync(user, role.Name);
+
+                    var result = await _userManager.UpdateAsync(user);
+                    if (result.Succeeded)
+                    {
+                        await dbContext.CommitAsync();
+                        await dbContext.DisposeAsync();
+                        return new ServiceResult<object>(true);
+                    }
+                    return new ServiceResult<object>(false, errors: new[] { "User Update Failed." });
+                }
+                catch(Exception)
+                {
+                    await dbContext.RollbackAsync();
+                    await dbContext.DisposeAsync();
+                    throw;
+                }
+
+            }
+        }
     }
 }

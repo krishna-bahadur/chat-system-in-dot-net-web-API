@@ -1,8 +1,8 @@
 {
   "Files": [
     {
-      "Id": "D:\\BCA\\BCA VIII\\Project\\ChatHub\\ChatHub\\wwwroot\\Images\\cebce31e-20f3-42d7-9800-162c328ee050-Screenshot (1).png",
-      "PackagePath": "staticwebassets\\Images\\cebce31e-20f3-42d7-9800-162c328ee050-Screenshot (1).png"
+      "Id": "D:\\BCA\\BCA VIII\\Project\\ChatHub\\ChatHub\\wwwroot\\Images\\swimming.jpg",
+      "PackagePath": "staticwebassets\\Images\\swimming.jpg"
     },
     {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.ChatHub.Microsoft.AspNetCore.StaticWebAssets.props",

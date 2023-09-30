@@ -180,5 +180,16 @@ namespace ChatHub.Controllers
             }
             return StatusCode(StatusCodes.Status200OK);
         }
+        [HttpPatch]
+        [Route("UpdateUserBySuperadmin")]
+        public async Task<IActionResult> UpdateUserBySuperadmin([FromBody] UserDTO userDTO)
+        {
+            var result = await _authService.UpdateUserBySuperadmin(userDTO);
+            if (!result.Success)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, result.Errors);
+            }
+            return StatusCode(StatusCodes.Status200OK);
+        }
     }
 }

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "9vywio32H0OenjPsig6O2+UExKplyl3+LdbdfGM5LQ4=",
+  "Hash": "NETu6a1o7FWOO81Uw67LG/Gv4eVX0/vIKtoM17AL3uI=",
   "Source": "ChatHub",
   "BasePath": "_content/ChatHub",
   "Mode": "Default",
@@ -17,12 +17,12 @@
   ],
   "Assets": [
     {
-      "Identity": "D:\\BCA\\BCA VIII\\Project\\ChatHub\\ChatHub\\wwwroot\\Images\\cebce31e-20f3-42d7-9800-162c328ee050-Screenshot (1).png",
+      "Identity": "D:\\BCA\\BCA VIII\\Project\\ChatHub\\ChatHub\\wwwroot\\Images\\swimming.jpg",
       "SourceId": "ChatHub",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\BCA\\BCA VIII\\Project\\ChatHub\\ChatHub\\wwwroot\\",
       "BasePath": "_content/ChatHub",
-      "RelativePath": "Images/cebce31e-20f3-42d7-9800-162c328ee050-Screenshot (1).png",
+      "RelativePath": "Images/swimming.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -31,7 +31,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\cebce31e-20f3-42d7-9800-162c328ee050-Screenshot (1).png"
+      "OriginalItemSpec": "wwwroot\\Images\\swimming.jpg"
     }
   ]
 }

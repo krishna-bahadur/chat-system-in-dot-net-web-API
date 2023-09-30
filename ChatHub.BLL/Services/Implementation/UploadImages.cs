@@ -34,12 +34,12 @@ namespace ChatHub.BLL.Services.Implementation
             {
                 Directory.CreateDirectory(_environment.WebRootPath + "\\Images\\");
             }
-            var filePath = _environment.WebRootPath + "\\Images\\" + special + "-" + file.FileName;
+            var filePath = _environment.WebRootPath + "\\Images\\" + file.FileName;
             using (FileStream sm = new FileStream(filePath, FileMode.Create))
             {
                 await file.CopyToAsync(sm);
             }
-            var fileName = special + "-" + file.FileName;
+            var fileName = file.FileName;
 
             filePath = "Images\\" + fileName;
             return filePath;

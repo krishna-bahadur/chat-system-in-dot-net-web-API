@@ -11,6 +11,7 @@ namespace ChatHub.BLL.Services.Interfaces
     {
         Task<ServiceResult<object>> Login(LoginModel loginModel);
         Task<ServiceResult<object>> CreateUser(RegisterModel registerModel);
+        Task<ServiceResult<object>> UpdateUserBySuperadmin(UserDTO userDTO);
         Task<ServiceResult<object>> logout(string username);
         Task<ServiceResult<object>> CheckEmail(string email);
         Task<ServiceResult<object>> CheckUsername(string username);
