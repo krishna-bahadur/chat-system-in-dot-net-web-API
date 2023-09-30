@@ -15,10 +15,14 @@ namespace ChatHub.BLL.Services.Implementation
     {
         private readonly IRepository<Message> _messageRepository;
         private readonly ChatHubDbContext _dbContext;
-        public MessageServices(IRepository<Message> messageRepository, ChatHubDbContext dbContext)
+        private readonly IEncryptionService _encryptionService;
+
+        public MessageServices(IRepository<Message> messageRepository, ChatHubDbContext dbContext, IEncryptionService encryptionService)
         {
             _messageRepository = messageRepository;
             _dbContext = dbContext;
+            _encryptionService = encryptionService;
+
         }
 
         public async Task<ServiceResult<MessageDTO>> CreateMessage(MessageDTO messageDTO)
@@ -30,7 +34,7 @@ namespace ChatHub.BLL.Services.Implementation
                     Message message = new Message()
                     {
                         MessageId = Guid.NewGuid().ToString(),
-                        Messages = messageDTO.Messages,
+                        Messages = await _encryptionService.Encrypt(messageDTO?.Messages),
                         SenderUsername = messageDTO.SenderUsername,
                         ReceiverUsername = messageDTO.ReceiverUsername,
                         FileURL = messageDTO.FileURL,
@@ -83,7 +87,7 @@ namespace ChatHub.BLL.Services.Implementation
                     messageDTOs.Add(new MessageDTO()
                     {
                         MessageId = message.MessageId,
-                        Messages = message.Messages,
+                        Messages = await _encryptionService.Decrypt(message?.Messages),
                         SenderUsername = message.SenderUsername,
                         ReceiverUsername = message.ReceiverUsername,
                         FileURL = message.FileURL,

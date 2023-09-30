@@ -11,5 +11,6 @@ namespace ChatHub.BLL.Services.Interfaces
     {
         Task<string> UploadImageAsync(IFormFile file);
         void DeleteImageFromFolder(string URL);
+        Task<IFormFile> ConvertBase64ToIFormFile(string base64String, string fileName, string fileExtension);
     }
 }

@@ -26,6 +26,8 @@ namespace ChatHub.BLL.Services.Implementation
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IRepository<Department> _departmentRepository;
         private readonly IUploadImages _uploadImages;
+        private readonly IEncryptionService _encryptionService;
+
 
         private readonly ChatHubDbContext _dbContext;
         private readonly IConfiguration _configuration;
@@ -38,7 +40,8 @@ namespace ChatHub.BLL.Services.Implementation
             ITokenService tokenService,
             ChatHubDbContext dbContext,
             IRepository<Department> departmentRepository,
-            IUploadImages uploadImages
+            IUploadImages uploadImages,
+            IEncryptionService encryptionService
             )
         {
             _userManager = userManager;
@@ -48,6 +51,7 @@ namespace ChatHub.BLL.Services.Implementation
             _dbContext = dbContext;
             _departmentRepository = departmentRepository;
             _uploadImages = uploadImages;
+            _encryptionService = encryptionService;
         }
 
 
@@ -502,12 +506,18 @@ namespace ChatHub.BLL.Services.Implementation
                     .FirstOrDefaultAsync();
 
                 var timestamp = mostRecentMessage?.DateTime ?? DateTime.MinValue;
+
                 usersWithChatTimestamp.Add((user, timestamp, mostRecentMessage?.Messages, mostRecentMessage?.DateTime));
             }
 
             var sortedUsers = usersWithChatTimestamp.OrderByDescending(u => u.Timestamp).Select(u => new {u.User,u.lastmessage,u.lastMessageDateTime});
             foreach (var sorteduser in sortedUsers)
             {
+                string decryptedMessage= "";
+                if (!string.IsNullOrEmpty(sorteduser?.lastmessage))
+                {
+                    decryptedMessage = await _encryptionService.Decrypt(sorteduser?.lastmessage);
+                }
                 userDTOs.Add(new UserDTO()
                 {
                     Fullname = sorteduser.User.FullName,
@@ -517,7 +527,7 @@ namespace ChatHub.BLL.Services.Implementation
                     DepartmentId = sorteduser.User.DepartmentId,
                     IsActive = sorteduser.User.IsActive,
                     ProfilePictureULR = sorteduser.User.ProfilePictureURL,
-                    LastMessage = sorteduser.lastmessage,
+                    LastMessage = decryptedMessage,
                     LastMessageDateTime = sorteduser.lastMessageDateTime
                 });
             }

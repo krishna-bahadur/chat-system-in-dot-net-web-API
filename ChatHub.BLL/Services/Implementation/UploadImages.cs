@@ -44,5 +44,23 @@ namespace ChatHub.BLL.Services.Implementation
             filePath = "Images\\" + fileName;
             return filePath;
         }
+
+        public async Task<IFormFile> ConvertBase64ToIFormFile(string base64String, string fileName, string fileExtension)
+        {
+            try
+            {
+                byte[] imageBytes = Convert.FromBase64String(base64String);
+
+                using (MemoryStream memoryStream = new MemoryStream(imageBytes))
+                {
+                    IFormFile imageFile = new FormFile(memoryStream, 0, memoryStream.Length, Guid.NewGuid().ToString(), fileName+'.'+fileExtension);
+                    return imageFile;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
     }
 }
