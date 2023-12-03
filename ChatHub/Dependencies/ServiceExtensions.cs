@@ -20,7 +20,7 @@ namespace ChatHub.Dependencies
             {
                 options.AddDefaultPolicy(builder =>
                 {
-                    builder.WithOrigins("https://chatsystem.hamrosystem.com", "http://localhost:3000", "https://telemedicine.hamrosystem.com")
+                    builder.WithOrigins("https://chathub.hamrosystem.com", "http://localhost:3000")
                     .AllowAnyHeader()
                         .AllowAnyMethod()
                         .AllowCredentials();

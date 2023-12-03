@@ -1,0 +1,164 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\BCA\\BCA VIII\\Project\\ChatHub\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{548AEF58-94BF-4F75-BE8A-4F0E278717C8}|UnitTest\\UnitTest.csproj|d:\\bca\\bca viii\\project\\chathub\\unittest\\authenticationservicetest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{548AEF58-94BF-4F75-BE8A-4F0E278717C8}|UnitTest\\UnitTest.csproj|solutionrelative:unittest\\authenticationservicetest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3242ED7-8482-4A0B-9BDF-7CDCCAB05ED4}|ChatHub.BLL\\ChatHub.BLL.csproj|d:\\bca\\bca viii\\project\\chathub\\chathub.bll\\services\\implementation\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3242ED7-8482-4A0B-9BDF-7CDCCAB05ED4}|ChatHub.BLL\\ChatHub.BLL.csproj|solutionrelative:chathub.bll\\services\\implementation\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F124B4E4-F00A-4068-B9DC-3D2FBEA1E33D}|ChatHub\\ChatHub.csproj|d:\\bca\\bca viii\\project\\chathub\\chathub\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{F124B4E4-F00A-4068-B9DC-3D2FBEA1E33D}|ChatHub\\ChatHub.csproj|solutionrelative:chathub\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F124B4E4-F00A-4068-B9DC-3D2FBEA1E33D}|ChatHub\\ChatHub.csproj|d:\\bca\\bca viii\\project\\chathub\\chathub\\controllers\\departmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F124B4E4-F00A-4068-B9DC-3D2FBEA1E33D}|ChatHub\\ChatHub.csproj|solutionrelative:chathub\\controllers\\departmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F124B4E4-F00A-4068-B9DC-3D2FBEA1E33D}|ChatHub\\ChatHub.csproj|d:\\bca\\bca viii\\project\\chathub\\chathub\\controllers\\authenticatecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F124B4E4-F00A-4068-B9DC-3D2FBEA1E33D}|ChatHub\\ChatHub.csproj|solutionrelative:chathub\\controllers\\authenticatecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F124B4E4-F00A-4068-B9DC-3D2FBEA1E33D}|ChatHub\\ChatHub.csproj|d:\\bca\\bca viii\\project\\chathub\\chathub\\chathub.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{F124B4E4-F00A-4068-B9DC-3D2FBEA1E33D}|ChatHub\\ChatHub.csproj|solutionrelative:chathub\\chathub.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F124B4E4-F00A-4068-B9DC-3D2FBEA1E33D}|ChatHub\\ChatHub.csproj|d:\\bca\\bca viii\\project\\chathub\\chathub\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F124B4E4-F00A-4068-B9DC-3D2FBEA1E33D}|ChatHub\\ChatHub.csproj|solutionrelative:chathub\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F124B4E4-F00A-4068-B9DC-3D2FBEA1E33D}|ChatHub\\ChatHub.csproj|d:\\bca\\bca viii\\project\\chathub\\chathub\\dependencies\\serviceextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F124B4E4-F00A-4068-B9DC-3D2FBEA1E33D}|ChatHub\\ChatHub.csproj|solutionrelative:chathub\\dependencies\\serviceextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL\\AppData\\Roaming\\Microsoft\\UserSecrets\\13708ebd-caf0-4b80-aca5-0a61a1b22cd0\\secrets.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AuthenticationServiceTest.cs",
+              "DocumentMoniker": "D:\\BCA\\BCA VIII\\Project\\ChatHub\\UnitTest\\AuthenticationServiceTest.cs",
+              "RelativeDocumentMoniker": "UnitTest\\AuthenticationServiceTest.cs",
+              "ToolTip": "D:\\BCA\\BCA VIII\\Project\\ChatHub\\UnitTest\\AuthenticationServiceTest.cs",
+              "RelativeToolTip": "UnitTest\\AuthenticationServiceTest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2023-12-01T12:49:41.15Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "D:\\BCA\\BCA VIII\\Project\\ChatHub\\ChatHub.BLL\\Services\\Implementation\\AuthService.cs",
+              "RelativeDocumentMoniker": "ChatHub.BLL\\Services\\Implementation\\AuthService.cs",
+              "ToolTip": "D:\\BCA\\BCA VIII\\Project\\ChatHub\\ChatHub.BLL\\Services\\Implementation\\AuthService.cs",
+              "RelativeToolTip": "ChatHub.BLL\\Services\\Implementation\\AuthService.cs",
+              "ViewState": "AQIAALMAAAAAAAAAAAAkwMkAAAA9AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2023-11-29T07:09:37.711Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DepartmentController.cs",
+              "DocumentMoniker": "D:\\BCA\\BCA VIII\\Project\\ChatHub\\ChatHub\\Controllers\\DepartmentController.cs",
+              "RelativeDocumentMoniker": "ChatHub\\Controllers\\DepartmentController.cs",
+              "ToolTip": "D:\\BCA\\BCA VIII\\Project\\ChatHub\\ChatHub\\Controllers\\DepartmentController.cs",
+              "RelativeToolTip": "ChatHub\\Controllers\\DepartmentController.cs",
+              "ViewState": "AQIAABgAAAAAAAAAAAAowAgAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2023-11-26T11:44:21.041Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ChatHub.csproj",
+              "DocumentMoniker": "D:\\BCA\\BCA VIII\\Project\\ChatHub\\ChatHub\\ChatHub.csproj",
+              "RelativeDocumentMoniker": "ChatHub\\ChatHub.csproj",
+              "ToolTip": "D:\\BCA\\BCA VIII\\Project\\ChatHub\\ChatHub\\ChatHub.csproj",
+              "RelativeToolTip": "ChatHub\\ChatHub.csproj",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2023-11-23T08:39:35.365Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AuthenticateController.cs",
+              "DocumentMoniker": "D:\\BCA\\BCA VIII\\Project\\ChatHub\\ChatHub\\Controllers\\AuthenticateController.cs",
+              "RelativeDocumentMoniker": "ChatHub\\Controllers\\AuthenticateController.cs",
+              "ToolTip": "D:\\BCA\\BCA VIII\\Project\\ChatHub\\ChatHub\\Controllers\\AuthenticateController.cs",
+              "RelativeToolTip": "ChatHub\\Controllers\\AuthenticateController.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABYAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2023-11-22T08:49:05.583Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "secrets.json",
+              "DocumentMoniker": "C:\\Users\\DELL\\AppData\\Roaming\\Microsoft\\UserSecrets\\13708ebd-caf0-4b80-aca5-0a61a1b22cd0\\secrets.json",
+              "ToolTip": "C:\\Users\\DELL\\AppData\\Roaming\\Microsoft\\UserSecrets\\13708ebd-caf0-4b80-aca5-0a61a1b22cd0\\secrets.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAACIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2023-11-22T14:43:56.803Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\BCA\\BCA VIII\\Project\\ChatHub\\ChatHub\\appsettings.json",
+              "RelativeDocumentMoniker": "ChatHub\\appsettings.json",
+              "ToolTip": "D:\\BCA\\BCA VIII\\Project\\ChatHub\\ChatHub\\appsettings.json",
+              "RelativeToolTip": "ChatHub\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2023-11-22T14:43:43.46Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\BCA\\BCA VIII\\Project\\ChatHub\\ChatHub\\Program.cs",
+              "RelativeDocumentMoniker": "ChatHub\\Program.cs",
+              "ToolTip": "D:\\BCA\\BCA VIII\\Project\\ChatHub\\ChatHub\\Program.cs",
+              "RelativeToolTip": "ChatHub\\Program.cs",
+              "ViewState": "AQIAABYAAAAAAAAAAAAAwDYAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2023-11-21T11:17:01.879Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ServiceExtensions.cs",
+              "DocumentMoniker": "D:\\BCA\\BCA VIII\\Project\\ChatHub\\ChatHub\\Dependencies\\ServiceExtensions.cs",
+              "RelativeDocumentMoniker": "ChatHub\\Dependencies\\ServiceExtensions.cs",
+              "ToolTip": "D:\\BCA\\BCA VIII\\Project\\ChatHub\\ChatHub\\Dependencies\\ServiceExtensions.cs",
+              "RelativeToolTip": "ChatHub\\Dependencies\\ServiceExtensions.cs",
+              "ViewState": "AQIAAEYAAAAAAAAAAAApwFQAAACCAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2023-10-04T06:01:41.407Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

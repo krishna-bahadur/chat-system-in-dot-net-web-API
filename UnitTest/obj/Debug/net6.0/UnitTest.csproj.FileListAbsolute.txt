@@ -180,3 +180,4 @@ D:\BCA\BCA VIII\Project\ChatHub\UnitTest\obj\Debug\net6.0\refint\UnitTest.dll
 D:\BCA\BCA VIII\Project\ChatHub\UnitTest\obj\Debug\net6.0\UnitTest.pdb
 D:\BCA\BCA VIII\Project\ChatHub\UnitTest\obj\Debug\net6.0\UnitTest.genruntimeconfig.cache
 D:\BCA\BCA VIII\Project\ChatHub\UnitTest\obj\Debug\net6.0\ref\UnitTest.dll
+D:\BCA\BCA VIII\Project\ChatHub\UnitTest\obj\Debug\net6.0\UnitTest.sourcelink.json

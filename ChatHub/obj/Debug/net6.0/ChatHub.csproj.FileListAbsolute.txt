@@ -120,3 +120,4 @@ D:\BCA\BCA VIII\Project\ChatHub\ChatHub\obj\Debug\net6.0\refint\ChatHub.dll
 D:\BCA\BCA VIII\Project\ChatHub\ChatHub\obj\Debug\net6.0\ChatHub.pdb
 D:\BCA\BCA VIII\Project\ChatHub\ChatHub\obj\Debug\net6.0\ChatHub.genruntimeconfig.cache
 D:\BCA\BCA VIII\Project\ChatHub\ChatHub\obj\Debug\net6.0\ref\ChatHub.dll
+D:\BCA\BCA VIII\Project\ChatHub\ChatHub\obj\Debug\net6.0\ChatHub.sourcelink.json

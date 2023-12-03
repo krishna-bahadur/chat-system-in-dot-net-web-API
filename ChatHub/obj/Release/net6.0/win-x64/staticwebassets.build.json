@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "NETu6a1o7FWOO81Uw67LG/Gv4eVX0/vIKtoM17AL3uI=",
+  "Hash": "lpsH4BR/SxTTSxpIDzJeDjr3+lM9w3tHY7wq+nWXMF8=",
   "Source": "ChatHub",
   "BasePath": "_content/ChatHub",
   "Mode": "Default",
@@ -17,6 +17,40 @@
   ],
   "Assets": [
     {
+      "Identity": "D:\\BCA\\BCA VIII\\Project\\ChatHub\\ChatHub\\wwwroot\\Images\\me.png_11zon.jpg",
+      "SourceId": "ChatHub",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\BCA\\BCA VIII\\Project\\ChatHub\\ChatHub\\wwwroot\\",
+      "BasePath": "_content/ChatHub",
+      "RelativePath": "Images/me.png_11zon.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\me.png_11zon.jpg"
+    },
+    {
+      "Identity": "D:\\BCA\\BCA VIII\\Project\\ChatHub\\ChatHub\\wwwroot\\Images\\Pagal Ma Banna Sakchhu - Swaroop raj Aacharya - Nepali film Rhythm - Full HD.mp4",
+      "SourceId": "ChatHub",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\BCA\\BCA VIII\\Project\\ChatHub\\ChatHub\\wwwroot\\",
+      "BasePath": "_content/ChatHub",
+      "RelativePath": "Images/Pagal Ma Banna Sakchhu - Swaroop raj Aacharya - Nepali film Rhythm - Full HD.mp4",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\Pagal Ma Banna Sakchhu - Swaroop raj Aacharya - Nepali film Rhythm - Full HD.mp4"
+    },
+    {
       "Identity": "D:\\BCA\\BCA VIII\\Project\\ChatHub\\ChatHub\\wwwroot\\Images\\swimming.jpg",
       "SourceId": "ChatHub",
       "SourceType": "Discovered",
@@ -32,6 +66,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\swimming.jpg"
+    },
+    {
+      "Identity": "D:\\BCA\\BCA VIII\\Project\\ChatHub\\ChatHub\\wwwroot\\Images\\video.mp4",
+      "SourceId": "ChatHub",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\BCA\\BCA VIII\\Project\\ChatHub\\ChatHub\\wwwroot\\",
+      "BasePath": "_content/ChatHub",
+      "RelativePath": "Images/video.mp4",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\video.mp4"
     }
   ]
 }

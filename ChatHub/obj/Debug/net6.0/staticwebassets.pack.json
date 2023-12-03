@@ -1,8 +1,20 @@
 {
   "Files": [
     {
+      "Id": "D:\\BCA\\BCA VIII\\Project\\ChatHub\\ChatHub\\wwwroot\\Images\\Pagal Ma Banna Sakchhu - Swaroop raj Aacharya - Nepali film Rhythm - Full HD.mp4",
+      "PackagePath": "staticwebassets\\Images\\Pagal Ma Banna Sakchhu - Swaroop raj Aacharya - Nepali film Rhythm - Full HD.mp4"
+    },
+    {
+      "Id": "D:\\BCA\\BCA VIII\\Project\\ChatHub\\ChatHub\\wwwroot\\Images\\me.png_11zon.jpg",
+      "PackagePath": "staticwebassets\\Images\\me.png_11zon.jpg"
+    },
+    {
       "Id": "D:\\BCA\\BCA VIII\\Project\\ChatHub\\ChatHub\\wwwroot\\Images\\swimming.jpg",
       "PackagePath": "staticwebassets\\Images\\swimming.jpg"
+    },
+    {
+      "Id": "D:\\BCA\\BCA VIII\\Project\\ChatHub\\ChatHub\\wwwroot\\Images\\video.mp4",
+      "PackagePath": "staticwebassets\\Images\\video.mp4"
     },
     {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.ChatHub.Microsoft.AspNetCore.StaticWebAssets.props",

@@ -10,3 +10,4 @@ D:\BCA\BCA VIII\Project\ChatHub\ChatHub.DAL\obj\Debug\net6.0\ChatHub.DAL.dll
 D:\BCA\BCA VIII\Project\ChatHub\ChatHub.DAL\obj\Debug\net6.0\refint\ChatHub.DAL.dll
 D:\BCA\BCA VIII\Project\ChatHub\ChatHub.DAL\obj\Debug\net6.0\ChatHub.DAL.pdb
 D:\BCA\BCA VIII\Project\ChatHub\ChatHub.DAL\obj\Debug\net6.0\ref\ChatHub.DAL.dll
+D:\BCA\BCA VIII\Project\ChatHub\ChatHub.DAL\obj\Debug\net6.0\ChatHub.DAL.sourcelink.json

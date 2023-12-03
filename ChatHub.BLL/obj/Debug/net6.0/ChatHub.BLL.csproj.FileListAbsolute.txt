@@ -13,3 +13,4 @@ D:\BCA\BCA VIII\Project\ChatHub\ChatHub.BLL\obj\Debug\net6.0\ChatHub.BLL.dll
 D:\BCA\BCA VIII\Project\ChatHub\ChatHub.BLL\obj\Debug\net6.0\refint\ChatHub.BLL.dll
 D:\BCA\BCA VIII\Project\ChatHub\ChatHub.BLL\obj\Debug\net6.0\ChatHub.BLL.pdb
 D:\BCA\BCA VIII\Project\ChatHub\ChatHub.BLL\obj\Debug\net6.0\ref\ChatHub.BLL.dll
+D:\BCA\BCA VIII\Project\ChatHub\ChatHub.BLL\obj\Debug\net6.0\ChatHub.BLL.sourcelink.json
